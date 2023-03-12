@@ -25,23 +25,6 @@
         android:paddingBottom="@dimen/margin_xl"
         android:text="@string/welcome" />
 
-    <TextView
-        android:id="@+id/requestName"
-        style="@style/subtitle.white"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_md"
-        android:text="@string/text_request_name" />
-
-    <EditText
-        android:id="@+id/et_name"
-        style="@style/welcome_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@null"
-        android:hint="Ingresa tu nombre"
-        android:paddingTop="@dimen/margin_sm" />
-
     <Button
         android:id="@+id/btn_next"
         android:layout_marginTop="@dimen/margin_md"

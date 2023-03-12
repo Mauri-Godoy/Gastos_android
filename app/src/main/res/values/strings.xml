@@ -3,4 +3,6 @@
     <string name="welcome">¡Bienvenido a tu gestor de gastos!</string>
     <string name="text_request_name">¿Como te llamas?</string>
     <string name="sharedPrefName">sp_name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

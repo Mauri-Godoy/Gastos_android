@@ -1,13 +1,11 @@
-package com.mg.gastos.models;
-
-import java.util.Date;
+package com.mg.gastos.entity;
 
 import lombok.Data;
 
 @Data
 public class Expense {
     private Integer id;
-    private Date date;
+    private String date;
     private String description;
     private double amount;
 }

@@ -1,19 +1,20 @@
 package com.mg.gastos;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.mg.gastos.db.Constant;
 import com.mg.gastos.db.DbExpense;
-import com.mg.gastos.db.DbHelper;
-import com.mg.gastos.models.Expense;
+import com.mg.gastos.entity.Expense;
+import com.mg.gastos.gui.ExpensesFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,22 +22,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getPreference();
-    }
-
-    private void getPreference() {
-        SharedPreferences sharedPreferences = this.getSharedPreferences(
-                getString(R.string.sharedPrefName), Context.MODE_PRIVATE);
-
-        String name = sharedPreferences.getString("name", "");
-
-        TextView textView = findViewById(R.id.textView);
-        textView.setText(name);
-
         create();
+
+        Button button = findViewById(R.id.btn_goToExpensesFragment);
+        button.setOnClickListener(v -> {
+            redirectTo();
+        });
     }
-    
-    private void create(){
+
+    private void redirectTo() {
+        getSupportFragmentManager().beginTransaction()
+                .add(android.R.id.content, new ExpensesFragment()).commit();
+    }
+
+
+    private void create() {
         DbExpense dbExpense = new DbExpense(this);
 
         Expense expense = new Expense();

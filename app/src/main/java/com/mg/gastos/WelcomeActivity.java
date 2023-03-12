@@ -10,6 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -26,22 +27,34 @@ public class WelcomeActivity extends AppCompatActivity {
         button.setOnClickListener(v -> {
             Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
             v.startAnimation(shake);
-            setName();
             Intent intent = new Intent(this, MainActivity.class);
             this.finish();
             startActivity(intent);
         });
     }
 
-    private void setName(){
-        SharedPreferences.Editor editor = this.getSharedPreferences(
-                getString(R.string.sharedPrefName), Context.MODE_PRIVATE).edit();
 
-        EditText editText = findViewById(R.id.et_name);
-
-        editor.putString("name", editText.getText().toString());
-
-        editor.apply();
-    }
-
+//Example sharedPreferences
+//    private void getPreference() {
+//        SharedPreferences sharedPreferences = this.getSharedPreferences(
+//                getString(R.string.sharedPrefName), Context.MODE_PRIVATE);
+//
+//        String name = sharedPreferences.getString("name", "");
+//
+//        TextView textView = findViewById(R.id.textView);
+//        textView.setText(name);
+//
+//        create();
+//    }
+//
+//    private void setName(){
+//        SharedPreferences.Editor editor = this.getSharedPreferences(
+//                getString(R.string.sharedPrefName), Context.MODE_PRIVATE).edit();
+//
+//        EditText editText = findViewById(R.id.et_name);
+//
+//        editor.putString("name", editText.getText().toString());
+//
+//        editor.apply();
+//    }
 }
