@@ -8,4 +8,7 @@
     <string name="item_create">Cargar</string>
     <string name="item_history">Historial</string>
     <string name="item_stats">Estadísticas</string>
+    <string name="description">Descripción</string>
+    <string name="upload">Cargar</string>
+    <string name="amount">Monto</string>
 </resources>

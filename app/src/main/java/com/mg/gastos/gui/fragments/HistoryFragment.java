@@ -1,4 +1,4 @@
-package com.mg.gastos.gui;
+package com.mg.gastos.gui.fragments;
 
 import android.os.Bundle;
 

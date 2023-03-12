@@ -7,17 +7,18 @@
     android:gravity="center"
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/margin_sm"
-    tools:context="gui.CreateFragment">
+    tools:context=".gui.fragments.CreateFragment">
 
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Monto"
+        android:hint="@string/amount"
         app:startIconDrawable="@drawable/ic_money">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
@@ -29,12 +30,14 @@
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Descripción"
+        android:layout_marginTop="@dimen/margin_sm"
+        android:hint="@string/description"
         app:counterEnabled="true"
         app:counterMaxLength="@integer/descriptionMaxLength"
         app:startIconDrawable="@drawable/ic_short_text">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -43,10 +46,11 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/btn_upload"
         style="@style/btn.primary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_xl"
-        android:text="Cargar" />
+        android:text="@string/upload" />
 
 </LinearLayout>

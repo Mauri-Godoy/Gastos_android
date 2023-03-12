@@ -8,7 +8,7 @@
     android:gravity="center"
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/margin_sm"
-    tools:context=".WelcomeActivity">
+    tools:context=".gui.WelcomeActivity">
 
     <ImageView
         android:layout_width="@dimen/image_welcome"
