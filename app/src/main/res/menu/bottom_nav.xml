@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item  android:title="@string/item_create" android:icon="@drawable/ic_monetization" android:id="@+id/createPreferenceItem"/>
+    <item android:title="Item" android:icon="@drawable/ic_monetization"/>
+    <item android:title="Item" android:icon="@drawable/ic_monetization"/>
+</menu>

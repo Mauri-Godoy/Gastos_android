@@ -2,15 +2,11 @@ package com.mg.gastos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -27,7 +23,7 @@ public class WelcomeActivity extends AppCompatActivity {
         button.setOnClickListener(v -> {
             Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
             v.startAnimation(shake);
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, ExpenseActivity.class);
             this.finish();
             startActivity(intent);
         });

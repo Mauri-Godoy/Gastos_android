@@ -44,4 +44,12 @@
         <item name="android:background">@drawable/rounded_primary</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <style name="BottomNavigation">
+        <item name="android:background">@color/white</item>
+        <item name="itemIconTint">@color/primary</item>
+        <item name="itemTextColor">@color/primary</item>
+        <item name="paddingStart">@dimen/margin_md</item>
+        <item name="paddingEnd">@dimen/margin_md</item>
+    </style>
 </resources>

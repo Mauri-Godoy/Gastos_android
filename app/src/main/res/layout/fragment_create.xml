@@ -7,15 +7,7 @@
     android:paddingHorizontal="@dimen/margin_sm"
     android:orientation="vertical"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        style="@style/subtitle"
-        android:text="Cargar gasto"
-        android:layout_marginBottom="@dimen/margin_md"
-        android:layout_height="wrap_content"/>
+    tools:context="gui.CreateFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -37,14 +29,6 @@
         android:layout_marginTop="@dimen/margin_xl"
         android:text="Cargar"
         style="@style/btn.primary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <Button
-        android:id="@+id/btn_goToExpensesFragment"
-        android:text="Ir a otro fragment"
-        style="@style/btn.primary"
-        android:layout_gravity="end|end"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
