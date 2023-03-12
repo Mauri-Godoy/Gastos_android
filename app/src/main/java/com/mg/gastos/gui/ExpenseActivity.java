@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mg.gastos.R;
 import com.mg.gastos.gui.fragments.CreateFragment;
 import com.mg.gastos.gui.fragments.HistoryFragment;
+import com.mg.gastos.gui.fragments.UnderConstructionFragment;
 
 public class ExpenseActivity extends AppCompatActivity {
 
@@ -31,7 +32,7 @@ public class ExpenseActivity extends AppCompatActivity {
                     replaceFragment(new CreateFragment());
                     break;
                 default:
-                    replaceFragment(new HistoryFragment());
+                    replaceFragment(new UnderConstructionFragment());
                     break;
             }
 

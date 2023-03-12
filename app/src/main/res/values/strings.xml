@@ -11,4 +11,5 @@
     <string name="description">Descripción</string>
     <string name="upload">Cargar</string>
     <string name="amount">Monto</string>
+    <string name="underconstruction">Sitio en construcción</string>
 </resources>
