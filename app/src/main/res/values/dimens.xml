@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_xl2">30sp</dimen>
+    <dimen name="text_xl">25sp</dimen>
+
+    <dimen name="margin_xl">30dp</dimen>
+    <dimen name="margin_md">20dp</dimen>
+    <dimen name="margin_sm">10dp</dimen>
+
+    <dimen name="image_welcome">130dp</dimen>
+</resources>

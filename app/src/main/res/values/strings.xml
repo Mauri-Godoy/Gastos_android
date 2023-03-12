@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Gastos</string>
+    <string name="welcome">¡Bienvenido a tu gestor de gastos!</string>
+    <string name="text_request_name">¿Como te llamas?</string>
+</resources>

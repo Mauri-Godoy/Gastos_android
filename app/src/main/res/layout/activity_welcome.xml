@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/margin_sm"
+    tools:context=".WelcomeActivity">
+
+    <ImageView
+        android:layout_width="@dimen/image_welcome"
+        android:layout_height="@dimen/image_welcome"
+        android:layout_marginBottom="@dimen/margin_md"
+        android:src="@drawable/ic_monetization"
+        app:layout_constraintBottom_toTopOf="@id/tv_welcome" />
+
+    <TextView
+        android:id="@+id/tv_welcome"
+        style="@style/welcome_msg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/margin_xl"
+        android:text="@string/welcome" />
+
+    <TextView
+        android:id="@+id/requestName"
+        style="@style/subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_md"
+        android:text="@string/text_request_name" />
+
+    <EditText
+        style="@style/welcome_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:hint="Ingresa tu nombre"
+        android:paddingTop="@dimen/margin_sm" />
+
+    <Button
+        android:layout_marginTop="@dimen/margin_md"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/btn_white"
+        android:text="Continuar"
+        android:layout_gravity="center"
+        android:gravity="center" />
+
+</LinearLayout>

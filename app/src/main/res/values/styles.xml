@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="welcome_msg">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="fontStyle">italic</item>
+        <item name="android:textSize">@dimen/text_xl2</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="subtitle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="fontStyle">italic</item>
+        <item name="android:textSize">@dimen/text_xl</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="welcome_input">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:gravity">center</item>
+        <item name="fontStyle">italic</item>
+        <item name="android:textSize">@dimen/text_xl</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="btn_white">
+        <item name="android:background">@drawable/rounded</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:gravity">center</item>
+    </style>
+</resources>
