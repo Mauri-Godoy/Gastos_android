@@ -52,4 +52,8 @@
         <item name="paddingStart">@dimen/margin_md</item>
         <item name="paddingEnd">@dimen/margin_md</item>
     </style>
+
+    <style name="TextInputLayout">
+        <item name="startIconTint">@color/primary</item>
+    </style>
 </resources>

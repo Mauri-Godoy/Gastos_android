@@ -9,14 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mg.gastos.R;
 import com.mg.gastos.db.DbExpense;
 import com.mg.gastos.entity.Expense;
 
 import java.util.List;
 
-public class ExpensesFragment extends Fragment {
+public class HistoryFragment extends Fragment {
 
 
     @Override
@@ -33,6 +32,6 @@ public class ExpensesFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_expenses, container, false);
+        return inflater.inflate(R.layout.fragment_history, container, false);
     }
 }

@@ -9,7 +9,7 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mg.gastos.gui.CreateFragment;
-import com.mg.gastos.gui.ExpensesFragment;
+import com.mg.gastos.gui.HistoryFragment;
 
 public class ExpenseActivity extends AppCompatActivity {
 
@@ -23,11 +23,11 @@ public class ExpenseActivity extends AppCompatActivity {
         bottomNavigationView.setOnItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
-                case R.id.createPreferenceItem:
+                case R.id.createExpenseItem:
                     replaceFragment(new CreateFragment());
                     break;
                 default:
-                    replaceFragment(new ExpensesFragment());
+                    replaceFragment(new HistoryFragment());
                     break;
             }
 
