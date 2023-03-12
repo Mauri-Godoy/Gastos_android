@@ -27,7 +27,7 @@
 
     <TextView
         android:id="@+id/requestName"
-        style="@style/subtitle"
+        style="@style/subtitle.white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_md"
@@ -42,10 +42,11 @@
         android:paddingTop="@dimen/margin_sm" />
 
     <Button
+        android:id="@+id/btn_next"
         android:layout_marginTop="@dimen/margin_md"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/btn_white"
+        style="@style/btn.white"
         android:text="Continuar"
         android:layout_gravity="center"
         android:gravity="center" />

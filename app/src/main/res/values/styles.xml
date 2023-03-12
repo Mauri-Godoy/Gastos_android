@@ -11,11 +11,14 @@
     </style>
 
     <style name="subtitle">
-        <item name="android:textColor">@color/white</item>
         <item name="android:gravity">center</item>
         <item name="fontStyle">italic</item>
         <item name="android:textSize">@dimen/text_xl</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="subtitle.white" parent="subtitle">
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="welcome_input">
@@ -26,9 +29,19 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="btn_white">
+    <style name="btn">
         <item name="android:background">@drawable/rounded</item>
         <item name="android:textColor">@color/primary</item>
-        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="btn.white" parent="btn">
+        <item name="android:background">@drawable/rounded</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
+
+    <style name="btn.primary" parent="btn">
+        <item name="android:background">@drawable/rounded_primary</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 </resources>
