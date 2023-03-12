@@ -7,12 +7,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mg.gastos.db.Constant;
+import com.mg.gastos.db.DbExpense;
 import com.mg.gastos.db.DbHelper;
+import com.mg.gastos.models.Expense;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,14 +37,12 @@ public class MainActivity extends AppCompatActivity {
     }
     
     private void create(){
-        DbHelper dbHelper = new DbHelper(this, null);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Toast.makeText(this, "BASE DE DATOS CREADA", Toast.LENGTH_SHORT).show();
-        if (db != null) {
-            ContentValues values = new ContentValues();
-            values.put("id", 1);
-            Long id =
-            db.insert(Constant.TABLE_CONTACTS, "id", values);
-        }
+        DbExpense dbExpense = new DbExpense(this);
+
+        Expense expense = new Expense();
+        expense.setAmount(10);
+        expense.setDescription("Hola");
+
+        dbExpense.create(expense);
     }
 }

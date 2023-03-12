@@ -11,8 +11,6 @@ public class DbHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "gastosDb";
 
-
-
     public DbHelper(@Nullable Context context, SQLiteDatabase.CursorFactory factory) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
     }
@@ -24,7 +22,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE " + Constant.TABLE_CONTACTS);
+        db.execSQL("DROP TABLE " + Constant.TABLE_EXPENSE);
         onCreate(db);
     }
 }
