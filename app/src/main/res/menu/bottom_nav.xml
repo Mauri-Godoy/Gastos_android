@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item  android:title="@string/item_create" android:icon="@drawable/ic_monetization" android:id="@+id/createExpenseItem"/>
     <item android:title="@string/item_history" android:icon="@drawable/ic_list" android:id="@+id/Item"/>
+    <item  android:title="@string/item_create" android:icon="@drawable/ic_monetization" android:id="@+id/createExpenseItem"/>
     <item android:title="@string/item_stats" android:icon="@drawable/ic_chart"/>
 </menu>
