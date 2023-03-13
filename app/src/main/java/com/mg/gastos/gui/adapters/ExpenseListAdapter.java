@@ -22,6 +22,7 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
     public ExpenseListAdapter(List<Expense> expenses) {
         this.expenses = expenses;
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,7 +35,9 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.getTextView().setText(expenses.get(position).getDescription());
+        holder.getDescription().setText(expenses.get(position).getDescription());
+        holder.getDate().setText(expenses.get(position).getDate());
+        holder.getAmount().setText("$" + expenses.get(position).getAmount());
     }
 
     @Override
@@ -44,11 +47,13 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         @Getter
-        private final TextView textView;
+        private final TextView description, date, amount;
 
         public ViewHolder(View view) {
             super(view);
-            textView = (TextView) view.findViewById(R.id.textView);
+            description = (TextView) view.findViewById(R.id.tv_description);
+            date = (TextView) view.findViewById(R.id.tv_date);
+            amount = (TextView) view.findViewById(R.id.tv_amount);
         }
     }
 }

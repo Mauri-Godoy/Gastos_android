@@ -6,6 +6,10 @@
     <dimen name="margin_xl">30dp</dimen>
     <dimen name="margin_md">20dp</dimen>
     <dimen name="margin_sm">10dp</dimen>
+    <dimen name="margin_xsm">5dp</dimen>
+    <dimen name="margin_xxsm">3dp</dimen>
 
     <dimen name="image_welcome">130dp</dimen>
+
+    <dimen name="amountWidth">180dp</dimen>
 </resources>

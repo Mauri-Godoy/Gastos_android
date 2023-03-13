@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="descriptionMaxLength">48</integer>
+    <integer name="descriptionMaxLength">15</integer>
 </resources>

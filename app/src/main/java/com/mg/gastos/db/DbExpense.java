@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.mg.gastos.entity.Expense;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -43,9 +45,12 @@ public class DbExpense {
     public long create(Expense expense) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+
         ContentValues values = new ContentValues();
         values.put(DESCRIPTION, expense.getDescription());
-        values.put(DATE, new Date().toString());
+        values.put(DATE, dtf.format(now));
         values.put(AMOUNT, expense.getAmount());
 
         return db.insert(TABLE, ID, values);
