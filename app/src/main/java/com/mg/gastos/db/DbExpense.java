@@ -28,7 +28,7 @@ public class DbExpense {
     private final DbHelper dbHelper;
 
     public DbExpense(Context context) {
-        dbHelper = new DbHelper(context, null);
+        dbHelper = DbHelper.getInstance(context);
     }
 
     public long create(Expense expense) {
@@ -39,10 +39,7 @@ public class DbExpense {
         values.put(DATE, new Date().toString());
         values.put(AMOUNT, expense.getAmount());
 
-        long id = db.insert(TABLE, ID, values);
-
-        db.close();
-        return id;
+        return db.insert(TABLE, ID, values);
     }
 
     public List<Expense> getAll() {
@@ -66,7 +63,6 @@ public class DbExpense {
             } while (c.moveToNext());
         }
         c.close();
-        db.close();
 
         return expenses;
     }
