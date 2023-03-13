@@ -1,6 +1,7 @@
 package com.mg.gastos.gui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -20,7 +21,17 @@ public class ExpenseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense);
-        replaceFragment(new CreateFragment());
+        setNavBottomData();
+
+    }
+
+    private void setTitle(String title) {
+        Toolbar materialToolbar = findViewById(R.id.toolbar);
+        materialToolbar.setTitle(title);
+    }
+
+    private void setNavBottomData() {
+        replaceFragment(new CreateFragment(), null);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
@@ -28,18 +39,20 @@ public class ExpenseActivity extends AppCompatActivity {
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
 
+            String title = item.getTitle().toString();
+
             switch (item.getItemId()) {
                 case R.id.createExpenseItem:
-                    replaceFragment(new CreateFragment());
+                    replaceFragment(new CreateFragment(), title);
                     break;
                 case R.id.expenseStatsItem:
-                    replaceFragment(new ExpenseStatsFragment());
+                    replaceFragment(new ExpenseStatsFragment(), title);
                     break;
                 case R.id.expenseHistoryItem:
-                    replaceFragment(new ExpenseHistoryFragment());
+                    replaceFragment(new ExpenseHistoryFragment(), title);
                     break;
                 default:
-                    replaceFragment(new UnderConstructionFragment());
+                    replaceFragment(new UnderConstructionFragment(), title);
                     break;
             }
 
@@ -47,11 +60,13 @@ public class ExpenseActivity extends AppCompatActivity {
         });
     }
 
-    private void replaceFragment(Fragment fragment) {
+    private void replaceFragment(Fragment fragment, String itemTitle) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame_layout, fragment);
         transaction.commit();
+        if (itemTitle != null)
+            setTitle(itemTitle);
     }
 
 }

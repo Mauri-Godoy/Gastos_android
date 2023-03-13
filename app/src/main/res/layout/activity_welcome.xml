@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary"
+    android:background="@color/white"
     android:gravity="center"
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/margin_sm"
@@ -30,7 +30,7 @@
         android:layout_marginTop="@dimen/margin_md"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        style="@style/btn.white"
+        style="@style/btn.primary"
         android:text="Continuar"
         android:layout_gravity="center"
         android:gravity="center" />

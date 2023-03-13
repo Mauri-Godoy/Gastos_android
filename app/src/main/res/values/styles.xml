@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="welcome_msg">
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@color/primary</item>
         <item name="android:gravity">center</item>
         <item name="fontStyle">italic</item>
         <item name="android:textSize">@dimen/text_xl2</item>
@@ -55,5 +55,17 @@
 
     <style name="TextInputLayout">
         <item name="startIconTint">@color/primary</item>
+    </style>
+
+    <style name="ActionBar" parent="@style/Widget.MaterialComponents.Toolbar">
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/primary</item>
+        <item name="titleTextAppearance">@style/TextAppearance.LL.Toolbar</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="android:background">@color/primary</item>
+    </style>
+
+    <style name="TextAppearance.LL.Toolbar" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>
