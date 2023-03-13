@@ -19,8 +19,8 @@ public class DbHelper extends SQLiteOpenHelper {
     }
 
 
-    private static final int DATABASE_VERSION = 2;
-    private static final String DATABASE_NAME = "gastos.Db";
+    private static final int DATABASE_VERSION = 3;
+    private static final String DATABASE_NAME = "gastos.db";
 
     private DbHelper(@Nullable Context context, SQLiteDatabase.CursorFactory factory) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);

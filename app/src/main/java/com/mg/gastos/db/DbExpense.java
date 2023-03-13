@@ -27,7 +27,16 @@ public class DbExpense {
 
     private final DbHelper dbHelper;
 
-    public DbExpense(Context context) {
+    private static DbExpense mInstance = null;
+
+    public static DbExpense getInstance(Context context) {
+        if (mInstance == null) {
+            mInstance = new DbExpense(context);
+        }
+        return mInstance;
+    }
+
+    private DbExpense(Context context) {
         dbHelper = DbHelper.getInstance(context);
     }
 

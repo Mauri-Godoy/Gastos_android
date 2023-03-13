@@ -34,7 +34,6 @@ public class CustomActivityOnCrash extends AppCompatActivity {
         final CaocConfig config = cat.ereza.customactivityoncrash.CustomActivityOnCrash.getConfigFromIntent(getIntent());
 
         if (config == null) {
-            //This should never happen - Just finish the activity to avoid a recursive crash.
             finish();
             return;
         }

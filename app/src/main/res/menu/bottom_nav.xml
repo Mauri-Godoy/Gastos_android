@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/Item"
+        android:id="@+id/expenseHistoryItem"
         android:icon="@drawable/ic_list"
         android:title="@string/item_history" />
     <item
@@ -10,7 +10,7 @@
         android:icon="@drawable/ic_upload"
         android:title="@string/item_create" />
     <item
-        android:id="@+id/statsExpenseItem"
+        android:id="@+id/expenseStatsItem"
         android:icon="@drawable/ic_chart"
         android:title="@string/item_stats" />
 </menu>

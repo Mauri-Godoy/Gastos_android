@@ -35,7 +35,7 @@ public class CreateFragment extends Fragment {
         EditText description = root.findViewById(R.id.et_description);
         EditText amount = root.findViewById(R.id.et_amount);
 
-        DbExpense dbExpense = new DbExpense(requireContext());
+        DbExpense dbExpense = DbExpense.getInstance(requireContext());
 
         Expense expense = new Expense();
         expense.setAmount(Double.parseDouble(amount.getText().toString()));
