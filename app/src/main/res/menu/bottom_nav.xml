@@ -10,6 +10,7 @@
         android:icon="@drawable/ic_upload"
         android:title="@string/item_create" />
     <item
+        android:id="@+id/statsExpenseItem"
         android:icon="@drawable/ic_chart"
         android:title="@string/item_stats" />
 </menu>
