@@ -2,7 +2,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="welcome_msg">
-        <item name="android:textColor">@color/primary</item>
+        <item name="android:textColor">@color/secondary</item>
         <item name="android:gravity">center</item>
         <item name="fontStyle">italic</item>
         <item name="android:textSize">@dimen/text_xl2</item>
@@ -47,14 +47,14 @@
 
     <style name="BottomNavigation">
         <item name="android:background">@color/white</item>
-        <item name="itemIconTint">@color/primary</item>
-        <item name="itemTextColor">@color/primary</item>
+        <item name="itemIconTint">@color/secondary</item>
+        <item name="itemTextColor">@color/secondary</item>
         <item name="paddingStart">@dimen/margin_md</item>
         <item name="paddingEnd">@dimen/margin_md</item>
     </style>
 
     <style name="TextInputLayout">
-        <item name="startIconTint">@color/primary</item>
+        <item name="startIconTint">@color/secondary</item>
     </style>
 
     <style name="ActionBar" parent="@style/Widget.MaterialComponents.Toolbar">

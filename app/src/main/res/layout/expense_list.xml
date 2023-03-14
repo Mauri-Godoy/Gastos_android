@@ -26,6 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"
+            android:textStyle="bold"
+            android:textColor="@color/secondary"
             android:textSize="@dimen/text_xl"
             tools:text="hola curioso cos" />
 
@@ -38,8 +40,7 @@
         android:layout_height="match_parent"
         android:gravity="end|center"
         android:background="@color/primary"
-        android:paddingHorizontal="@dimen/margin_md"
-        android:paddingVertical="@dimen/margin_sm"
+        android:paddingHorizontal="@dimen/margin_sm"
         android:textColor="@color/white"
         android:textSize="@dimen/text_xl"
         android:textStyle="bold"
