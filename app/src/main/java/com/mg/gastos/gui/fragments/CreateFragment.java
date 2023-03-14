@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.mg.gastos.R;
 import com.mg.gastos.db.DbExpense;
@@ -55,7 +54,7 @@ public class CreateFragment extends Fragment {
     private void setButtonAction(){
         Button button = root.findViewById(R.id.btn_upload);
         button.setOnClickListener(v -> {
-            Animator.shake(v);
+            Animator.alpha(v);
             create();
         });
     }

@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.mg.gastos.R;
 import com.mg.gastos.entity.Expense;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.List;
 
 import lombok.Getter;
@@ -35,7 +37,13 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.getDescription().setText(expenses.get(position).getDescription());
+
+        String description = expenses.get(position).getDescription();
+
+        if (StringUtils.isBlank(description))
+            description = "-";
+
+        holder.getDescription().setText(description);
         holder.getDate().setText(expenses.get(position).getDate());
         holder.getAmount().setText("$" + expenses.get(position).getAmount());
     }

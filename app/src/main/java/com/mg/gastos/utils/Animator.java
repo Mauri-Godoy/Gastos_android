@@ -11,9 +11,9 @@ import com.mg.gastos.R;
 
 public class Animator {
 
-    public static void shake(View v) {
-        Animation shake = AnimationUtils.loadAnimation(v.getContext(), R.anim.shake);
-        v.startAnimation(shake);
+    public static void alpha(View v) {
+        Animation alpha = AnimationUtils.loadAnimation(v.getContext(), R.anim.alpha);
+        v.startAnimation(alpha);
     }
 
     public static void transition(FragmentManager fragmentManager, int fragmentId, Fragment fragment) {

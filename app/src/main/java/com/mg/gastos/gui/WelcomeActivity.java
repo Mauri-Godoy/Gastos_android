@@ -4,8 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.mg.gastos.R;
@@ -24,7 +22,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private void setButtonAction() {
         Button button = findViewById(R.id.btn_next);
         button.setOnClickListener(v -> {
-            Animator.shake(v);
+            Animator.alpha(v);
             Intent intent = new Intent(this, ExpenseActivity.class);
             this.finish();
             startActivity(intent);
