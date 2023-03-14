@@ -9,11 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.mg.gastos.R;
 import com.mg.gastos.db.DbExpense;
 import com.mg.gastos.entity.Expense;
 import com.mg.gastos.utils.Animator;
+import com.mg.gastos.utils.Validator;
 
 public class CreateFragment extends Fragment {
 
@@ -34,6 +36,9 @@ public class CreateFragment extends Fragment {
 
         EditText description = root.findViewById(R.id.et_description);
         EditText amount = root.findViewById(R.id.et_amount);
+
+       if (!Validator.passRequired(amount))
+           return;
 
         DbExpense dbExpense = DbExpense.getInstance(requireContext());
 

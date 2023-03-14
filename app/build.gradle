@@ -48,4 +48,8 @@ dependencies {
 
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 
-    implementation 'cat.ereza:customactivityoncrash:2.4.0'}
+    implementation 'cat.ereza:customactivityoncrash:2.4.0'
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-lang3
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+}
