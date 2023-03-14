@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mg.gastos.R;
@@ -14,6 +15,7 @@ import com.mg.gastos.gui.fragments.CreateFragment;
 import com.mg.gastos.gui.fragments.ExpenseHistoryFragment;
 import com.mg.gastos.gui.fragments.ExpenseStatsFragment;
 import com.mg.gastos.gui.fragments.UnderConstructionFragment;
+import com.mg.gastos.utils.Animator;
 
 public class ExpenseActivity extends AppCompatActivity {
 
@@ -61,12 +63,12 @@ public class ExpenseActivity extends AppCompatActivity {
     }
 
     private void replaceFragment(Fragment fragment, String itemTitle) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.frame_layout, fragment);
-        transaction.commit();
+
+        Animator.transition(getSupportFragmentManager(), R.id.frame_layout, fragment);
+
         if (itemTitle != null)
             setTitle(itemTitle);
+
     }
 
 }

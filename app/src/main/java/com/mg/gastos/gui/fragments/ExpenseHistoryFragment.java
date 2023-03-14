@@ -24,7 +24,7 @@ public class ExpenseHistoryFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.expense_history_fragment, container, false);
+        root = inflater.inflate(R.layout.fragment_expense_history, container, false);
 
         setExpenseList();
 
