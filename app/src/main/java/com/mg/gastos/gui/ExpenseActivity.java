@@ -3,11 +3,8 @@ package com.mg.gastos.gui;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.widget.FrameLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mg.gastos.R;
@@ -19,16 +16,22 @@ import com.mg.gastos.utils.Animator;
 
 public class ExpenseActivity extends AppCompatActivity {
 
+    private static ExpenseActivity instance = null;
+
+    public static ExpenseActivity getInstance() {
+        return instance;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        instance = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense);
         setNavBottomData();
-
     }
 
-    private void setTitle(String title) {
-        Toolbar materialToolbar = findViewById(R.id.toolbar);
+    public static void setToolbarTitle(String title) {
+        Toolbar materialToolbar = getInstance().findViewById(R.id.toolbar);
         materialToolbar.setTitle(title);
     }
 
@@ -67,7 +70,7 @@ public class ExpenseActivity extends AppCompatActivity {
         Animator.transition(getSupportFragmentManager(), R.id.frame_layout, fragment);
 
         if (itemTitle != null)
-            setTitle(itemTitle);
+            setToolbarTitle(itemTitle);
 
     }
 
