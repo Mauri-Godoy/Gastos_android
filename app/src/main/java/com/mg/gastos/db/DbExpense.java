@@ -28,7 +28,7 @@ public class DbExpense {
             DESCRIPTION + " VARCHAR(255), " +
             AMOUNT + " DOUBLE NOT NULL)";
     public static final String SELECT_QUERY =
-            String.format("SELECT %s, %s, %s, %s FROM %s", ID, AMOUNT, DESCRIPTION, DATE, TABLE);
+            String.format("SELECT %s, %s, %s, %s FROM %s ORDER BY id DESC", ID, AMOUNT, DESCRIPTION, DATE, TABLE);
 
     private final DbHelper dbHelper;
 

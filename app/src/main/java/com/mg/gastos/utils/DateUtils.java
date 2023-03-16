@@ -30,4 +30,10 @@ public class DateUtils {
 
         return dtf.format(localDateTime);
     }
+
+    public static String parseToSimpleDate(LocalDateTime localDateTime) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd 'de' MMM HH:mm");
+
+        return dtf.format(localDateTime);
+    }
 }

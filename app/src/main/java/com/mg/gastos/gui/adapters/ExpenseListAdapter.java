@@ -10,9 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mg.gastos.R;
 import com.mg.gastos.entity.Expense;
+import com.mg.gastos.utils.DateUtils;
 
 import org.apache.commons.lang3.StringUtils;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import lombok.Getter;
@@ -38,14 +40,16 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        String description = expenses.get(position).getDescription();
+        Expense expense = expenses.get(position);
 
-        if (StringUtils.isBlank(description))
-            description = "-";
+        String description = StringUtils.isNoneBlank(expense.getDescription()) ? expense.getDescription() : "-";
+        String amount = "$ " + expenses.get(position).getAmount();
+        LocalDateTime localDateTime = DateUtils.parseFromDB(expenses.get(position).getDate());
+        String dateStr = DateUtils.parseToSimpleDate(localDateTime);
 
         holder.getDescription().setText(description);
-        holder.getDate().setText(expenses.get(position).getDate());
-        holder.getAmount().setText("$" + expenses.get(position).getAmount());
+        holder.getDate().setText(dateStr);
+        holder.getAmount().setText(amount);
     }
 
     @Override

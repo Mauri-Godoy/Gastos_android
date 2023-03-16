@@ -36,7 +36,7 @@ public class ExpenseHistoryFragment extends Fragment {
         RecyclerView recyclerView = root.findViewById(R.id.rv_expenseList);
         List<Expense> expenses = DbExpense.getInstance(requireContext()).getAll();
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, true);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(new ExpenseListAdapter(expenses));
     }
