@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.mg.gastos.R;
 import com.mg.gastos.db.DbExpense;
@@ -39,6 +40,9 @@ public class CreateFragment extends Fragment {
        if (!Validator.passRequired(amount))
            return;
 
+        if (!Validator.passMinValue(amount, 0.0))
+            return;
+
         DbExpense dbExpense = DbExpense.getInstance(requireContext());
 
         Expense expense = new Expense();
@@ -46,6 +50,8 @@ public class CreateFragment extends Fragment {
         expense.setDescription(description.getText().toString());
 
         dbExpense.create(expense);
+
+        Toast.makeText(requireContext(), "Cargado con exito!", Toast.LENGTH_SHORT).show();
 
         description.setText("");
         amount.setText("");

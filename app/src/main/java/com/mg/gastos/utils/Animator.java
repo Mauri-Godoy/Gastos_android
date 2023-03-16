@@ -29,7 +29,6 @@ public class Animator {
                             R.animator.exit_to_left  // popExit
                     )
                     .replace(fragmentId, fragment)
-                    .addToBackStack("null")
                     .commit();
         }
     }

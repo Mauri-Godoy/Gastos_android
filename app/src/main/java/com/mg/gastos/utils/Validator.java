@@ -22,6 +22,18 @@ public class Validator {
         return passed;
     }
 
+    public static boolean passMinValue(TextView textView, Double minValue) {
+        Double value = Double.valueOf(textView.getText().toString());
+        boolean passed = true;
+
+        if (value.compareTo(minValue) < 1) {
+            passed = false;
+            textView.setError(String.format("El valor de este campo debe ser mayor a %s.", minValue.intValue()));
+        }
+
+        return passed;
+    }
+
     public static boolean passRequired(TextView[] textViews) {
 
         boolean res = true;

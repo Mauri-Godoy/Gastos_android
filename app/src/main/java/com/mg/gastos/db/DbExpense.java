@@ -8,8 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import com.mg.gastos.entity.Expense;
 import com.mg.gastos.utils.DateUtils;
 
+import org.apache.commons.math3.util.Precision;
+
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -117,6 +118,6 @@ public class DbExpense {
         }
         c.close();
 
-        return value;
+        return Precision.round(value, 2);
     }
 }
