@@ -100,4 +100,23 @@ public class DbExpense {
 
         return values;
     }
+
+    public Double getTotal() {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        String query = String.format("SELECT SUM(%s) FROM expense", AMOUNT);
+
+        Cursor c = db.rawQuery(query, null);
+
+        double value = 0.0;
+
+        if (c.moveToFirst()) {
+            do {
+                value = c.getDouble(0);
+            } while (c.moveToNext());
+        }
+        c.close();
+
+        return value;
+    }
 }

@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.mg.gastos.R;
 import com.mg.gastos.db.DbExpense;
@@ -26,11 +27,11 @@ public class ExpenseHistoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_expense_history, container, false);
 
+        setTotal();
         setExpenseList();
 
         return root;
     }
-
 
     private void setExpenseList() {
         RecyclerView recyclerView = root.findViewById(R.id.rv_expenseList);
@@ -39,5 +40,11 @@ public class ExpenseHistoryFragment extends Fragment {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(new ExpenseListAdapter(expenses));
+    }
+
+    private void setTotal() {
+        TextView textView = root.findViewById(R.id.tv_total);
+        double total = DbExpense.getInstance(requireContext()).getTotal();
+        textView.setText("$ " + total);
     }
 }
