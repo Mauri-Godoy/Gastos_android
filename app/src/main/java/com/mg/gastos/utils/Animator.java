@@ -1,5 +1,6 @@
 package com.mg.gastos.utils;
 
+import android.animation.AnimatorListenerAdapter;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -14,6 +15,17 @@ public class Animator {
     public static void alpha(View v) {
         Animation alpha = AnimationUtils.loadAnimation(v.getContext(), R.anim.alpha);
         v.startAnimation(alpha);
+    }
+
+    public static void show(View view) {
+        if (view.getVisibility() != View.VISIBLE) {
+            view.setVisibility(View.VISIBLE);
+            view.animate()
+                    .alpha(0)
+                    .setDuration(500)
+                    .alpha(1f)
+                    .setListener(null);
+        }
     }
 
     public static void transition(FragmentManager fragmentManager, int fragmentId, Fragment fragment) {

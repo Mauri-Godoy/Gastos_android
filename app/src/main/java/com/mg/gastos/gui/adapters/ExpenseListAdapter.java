@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mg.gastos.R;
 import com.mg.gastos.entity.Expense;
+import com.mg.gastos.utils.Animator;
 import com.mg.gastos.utils.DateUtils;
 
 import org.apache.commons.lang3.StringUtils;
@@ -42,11 +43,16 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
 
         Expense expense = expenses.get(position);
 
-        String description = StringUtils.isNoneBlank(expense.getDescription()) ? expense.getDescription() : "-";
+        String description = expense.getDescription();
+
+        if (StringUtils.isNoneBlank(description)) {
+            holder.getDescription().setText(description);
+            Animator.show(holder.getDescription());
+        }
+
         String amount = "$ " + expense.getAmount();
         String dateStr = DateUtils.parseToSimpleDate(expense.getDate());
 
-        holder.getDescription().setText(description);
         holder.getDate().setText(dateStr);
         holder.getAmount().setText(amount);
     }
