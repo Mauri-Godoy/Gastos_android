@@ -43,9 +43,8 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
         Expense expense = expenses.get(position);
 
         String description = StringUtils.isNoneBlank(expense.getDescription()) ? expense.getDescription() : "-";
-        String amount = "$ " + expenses.get(position).getAmount();
-        LocalDateTime localDateTime = DateUtils.parseFromDB(expenses.get(position).getDate());
-        String dateStr = DateUtils.parseToSimpleDate(localDateTime);
+        String amount = "$ " + expense.getAmount();
+        String dateStr = DateUtils.parseToSimpleDate(expense.getDate());
 
         holder.getDescription().setText(description);
         holder.getDate().setText(dateStr);

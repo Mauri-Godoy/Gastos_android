@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.mg.gastos.R;
-import com.mg.gastos.db.DbExpense;
+import com.mg.gastos.db.ExpenseRepository;
 import com.mg.gastos.entity.Expense;
 import com.mg.gastos.gui.adapters.ExpenseListAdapter;
 
@@ -35,7 +35,7 @@ public class ExpenseHistoryFragment extends Fragment {
 
     private void setExpenseList() {
         RecyclerView recyclerView = root.findViewById(R.id.rv_expenseList);
-        List<Expense> expenses = DbExpense.getInstance(requireContext()).getAll();
+        List<Expense> expenses = ExpenseRepository.getInstance(requireContext()).getAll();
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -44,7 +44,7 @@ public class ExpenseHistoryFragment extends Fragment {
 
     private void setTotal() {
         TextView textView = root.findViewById(R.id.tv_total);
-        double total = DbExpense.getInstance(requireContext()).getTotal();
+        Double total = ExpenseRepository.getInstance(requireContext()).getTotal();
         textView.setText("$ " + total);
     }
 }

@@ -1,11 +1,20 @@
 package com.mg.gastos.entity;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
 import lombok.Data;
 
 @Data
-public class Expense {
+@Entity
+public class Expense implements Serializable {
+
+    @PrimaryKey(autoGenerate = true)
     private Integer id;
-    private String date;
+    private LocalDateTime date;
     private String description;
-    private double amount;
+    private Double amount;
 }

@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.mg.gastos.R;
-import com.mg.gastos.db.DbExpense;
+import com.mg.gastos.db.ExpenseRepository;
 import com.mg.gastos.entity.Expense;
 import com.mg.gastos.utils.Animator;
 import com.mg.gastos.utils.Validator;
@@ -43,13 +43,13 @@ public class CreateFragment extends Fragment {
         if (!Validator.passMinValue(amount, 0.0))
             return;
 
-        DbExpense dbExpense = DbExpense.getInstance(requireContext());
+        ExpenseRepository expenseRepository = ExpenseRepository.getInstance(requireContext());
 
         Expense expense = new Expense();
         expense.setAmount(Double.parseDouble(amount.getText().toString()));
         expense.setDescription(description.getText().toString());
 
-        dbExpense.create(expense);
+        expenseRepository.insert(expense);
 
         Toast.makeText(requireContext(), "Cargado con exito!", Toast.LENGTH_SHORT).show();
 

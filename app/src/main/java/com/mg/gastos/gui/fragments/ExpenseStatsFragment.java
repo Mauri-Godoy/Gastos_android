@@ -15,13 +15,13 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.mg.gastos.R;
-import com.mg.gastos.db.DbExpense;
+import com.mg.gastos.db.ExpenseRepository;
+import com.mg.gastos.entity.Expense;
 import com.mg.gastos.gui.ExpenseActivity;
 import com.mg.gastos.utils.DateUtils;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -67,21 +67,19 @@ public class ExpenseStatsFragment extends Fragment {
 
         ArrayList<IBarDataSet> dataSets = new ArrayList<>();
 
-        DbExpense dbExpense = DbExpense.getInstance(requireContext());
+        ExpenseRepository expenseRepository = ExpenseRepository.getInstance(requireContext());
 
-        ArrayList<Map.Entry<String, Double>> list = new ArrayList<>(dbExpense.getMonthAndValues().entrySet());
+        List<Expense> list =expenseRepository.getMonthAndValues();
 
         for (int i = 0; list.size() > i; i++) {
 
             ArrayList<BarEntry> entries = new ArrayList<>();
 
-            Map.Entry<String, Double> entry = list.get(i);
+            Expense expense = list.get(i);
 
-            entries.add(new BarEntry(i, entry.getValue().floatValue()));
+            entries.add(new BarEntry(i, expense.getAmount().floatValue()));
 
-            LocalDateTime date = DateUtils.parseFromDB(entry.getKey());
-
-            BarDataSet barDataSet = new BarDataSet(entries, DateUtils.parseToMonth(date).toUpperCase());
+            BarDataSet barDataSet = new BarDataSet(entries, DateUtils.parseToMonth(expense.getDate()).toUpperCase());
 
             barDataSet.setColor(requireContext().getColor(colors[i]));
 
