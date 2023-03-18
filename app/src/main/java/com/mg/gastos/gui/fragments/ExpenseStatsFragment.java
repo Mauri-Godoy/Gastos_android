@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
@@ -15,17 +16,18 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.itextpdf.text.DocumentException;
 import com.mg.gastos.R;
 import com.mg.gastos.db.ExpenseRepository;
 import com.mg.gastos.entity.Expense;
 import com.mg.gastos.gui.ExpenseActivity;
+import com.mg.gastos.utils.Animator;
 import com.mg.gastos.utils.DateUtils;
 import com.mg.gastos.utils.PDFGenerator;
+import com.mg.gastos.utils.PermissionHelper;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class ExpenseStatsFragment extends Fragment {
 
@@ -33,10 +35,15 @@ public class ExpenseStatsFragment extends Fragment {
     private final int[] colors = new int[]{R.color.chart1, R.color.chart2, R.color.chart3, R.color.chart4,
             R.color.chart5, R.color.secondary, R.color.primary};
 
+    ExpenseRepository expenseRepository;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_expense_stats, container, false);
+
+        PermissionHelper.requestPermission(requireActivity());
+        expenseRepository = ExpenseRepository.getInstance(requireContext());
 
         createBarChart();
         setButtonAction();
@@ -69,8 +76,6 @@ public class ExpenseStatsFragment extends Fragment {
     private ArrayList<IBarDataSet> createDataSet() {
 
         ArrayList<IBarDataSet> dataSets = new ArrayList<>();
-
-        ExpenseRepository expenseRepository = ExpenseRepository.getInstance(requireContext());
 
         List<Expense> list = expenseRepository.getMonthAndValues();
 
@@ -106,7 +111,19 @@ public class ExpenseStatsFragment extends Fragment {
 
     private void setButtonAction() {
         Button button = root.findViewById(R.id.btn_generatePdf);
-        button.setOnClickListener(v ->
-                PDFGenerator.generate(requireContext()));
+        button.setOnClickListener(v -> {
+            Animator.alpha(v);
+            if (PermissionHelper.checkPermission(requireActivity())) {
+                v.setEnabled(false);
+                try {
+                    PDFGenerator.generatePdfTable(requireContext(), expenseRepository.getAll());
+                } catch (DocumentException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                PermissionHelper.requestPermission(requireActivity());
+                Toast.makeText(requireContext(), "Necesito otorgar los permisos de almacenamiento.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

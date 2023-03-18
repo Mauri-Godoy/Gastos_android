@@ -2,9 +2,7 @@ package com.mg.gastos.utils;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Typeface;
@@ -16,14 +14,23 @@ import android.util.Log;
 
 import androidx.core.content.FileProvider;
 
-import com.mg.gastos.R;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.mg.gastos.entity.Expense;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.List;
 
 public class PDFGenerator {
-    public static void generate(Context context) {
+
+    public static void generatePDFDocument(Context context) {
         PdfDocument pdfDocument = new PdfDocument();
         Paint paint = new Paint();
         TextPaint title = new TextPaint();
@@ -83,5 +90,43 @@ public class PDFGenerator {
         intent.setDataAndType(apkURI, mimeType);
         intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         context.startActivity(intent);
+    }
+
+    public static void generatePdfTable(Context context, List<Expense> list) throws DocumentException {
+
+        String title = "Historial de gastos";
+
+        Paragraph pTitle = new Paragraph(20, title.concat("\n\n\n\n"));
+
+        PdfPTable pdfPTable = new PdfPTable(4);
+        pdfPTable.addCell("Fecha");
+        pdfPTable.addCell("Categoría");
+        pdfPTable.addCell("Descripción");
+        pdfPTable.addCell("Monto");
+
+        list.forEach(expense -> {
+            pdfPTable.addCell(expense.getDate().toString());
+            pdfPTable.addCell(expense.getCategory().getName());
+            pdfPTable.addCell(expense.getDescription());
+            pdfPTable.addCell(expense.getAmount().toString());
+        });
+
+        String path = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS) + File.separator;
+        String fileName = title.concat(LocalDateTime.now().toString()).concat(".pdf");
+        File file = new File(path, fileName);
+        Document document = new Document();
+
+        try {
+            FileOutputStream fileOutputStream = new FileOutputStream(file);
+            PdfWriter.getInstance(document, fileOutputStream);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        document.open();
+        document.add(pTitle);
+        document.add(pdfPTable);
+        document.close();
+        viewFile(file, context);
     }
 }
