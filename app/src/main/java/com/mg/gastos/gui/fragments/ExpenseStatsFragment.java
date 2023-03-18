@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
@@ -19,6 +20,7 @@ import com.mg.gastos.db.ExpenseRepository;
 import com.mg.gastos.entity.Expense;
 import com.mg.gastos.gui.ExpenseActivity;
 import com.mg.gastos.utils.DateUtils;
+import com.mg.gastos.utils.PDFGenerator;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -37,6 +39,7 @@ public class ExpenseStatsFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_expense_stats, container, false);
 
         createBarChart();
+        setButtonAction();
 
         return root;
     }
@@ -69,7 +72,7 @@ public class ExpenseStatsFragment extends Fragment {
 
         ExpenseRepository expenseRepository = ExpenseRepository.getInstance(requireContext());
 
-        List<Expense> list =expenseRepository.getMonthAndValues();
+        List<Expense> list = expenseRepository.getMonthAndValues();
 
         for (int i = 0; list.size() > i; i++) {
 
@@ -99,5 +102,11 @@ public class ExpenseStatsFragment extends Fragment {
         data.setBarWidth(0.9f);
         chart.setData(data);
 
+    }
+
+    private void setButtonAction() {
+        Button button = root.findViewById(R.id.btn_generatePdf);
+        button.setOnClickListener(v ->
+                PDFGenerator.generate(requireContext()));
     }
 }

@@ -14,6 +14,7 @@ import com.mg.gastos.gui.fragments.ExpenseHistoryFragment;
 import com.mg.gastos.gui.fragments.ExpenseStatsFragment;
 import com.mg.gastos.gui.fragments.UnderConstructionFragment;
 import com.mg.gastos.utils.Animator;
+import com.mg.gastos.utils.PermissionHelper;
 
 public class ExpenseActivity extends AppCompatActivity {
 
@@ -27,6 +28,9 @@ public class ExpenseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         instance = this;
         super.onCreate(savedInstanceState);
+
+        PermissionHelper.requestPermission(this);
+
         setContentView(R.layout.activity_expense);
         setNavBottomData();
     }
