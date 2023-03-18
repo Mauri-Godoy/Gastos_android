@@ -11,14 +11,21 @@ import android.net.Uri;
 import android.os.Environment;
 import android.text.TextPaint;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.core.content.FileProvider;
 
+import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.mg.gastos.R;
 import com.mg.gastos.entity.Expense;
 
 import java.io.File;
@@ -94,22 +101,62 @@ public class PDFGenerator {
 
     public static void generatePdfTable(Context context, List<Expense> list) throws DocumentException {
 
-        String title = "Historial de gastos";
+        if (list.isEmpty()) {
+            Toast.makeText(context, "No hay datos para generar el documento.", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        Paragraph pTitle = new Paragraph(20, title.concat("\n\n\n\n"));
+        String title = "Historial de gastos".toUpperCase();
+        BaseColor secondaryColor = new BaseColor(125, 119, 215);
+
+        Font fontTitle = new Font();
+        fontTitle.setStyle(Font.BOLD);
+        fontTitle.setSize(16);
+
+        Paragraph pTitle = new Paragraph(title.concat("\n\n"), fontTitle);
+
+        Font fontWhite = new Font();
+        fontWhite.setStyle(Font.BOLD);
+        fontWhite.setColor(BaseColor.WHITE);
+
+        int paddingCell = 2;
+
+        Phrase pCategory = new Phrase("Categoría", fontWhite);
+        PdfPCell categoryCell = new PdfPCell(pCategory);
+        categoryCell.setBackgroundColor(secondaryColor);
+        categoryCell.setPadding(paddingCell);
+
+        Phrase pDescription = new Phrase("Descripción", fontWhite);
+        PdfPCell descriptionCell = new PdfPCell(pDescription);
+        descriptionCell.setBackgroundColor(secondaryColor);
+        descriptionCell.setPadding(paddingCell);
+
+        Phrase pDate = new Phrase("Fecha", fontWhite);
+        PdfPCell dateCell = new PdfPCell(pDate);
+        dateCell.setBackgroundColor(secondaryColor);
+        dateCell.setPadding(paddingCell);
+
+        Phrase pAmount = new Phrase("Monto", fontWhite);
+        PdfPCell amountCell = new PdfPCell(pAmount);
+        amountCell.setBackgroundColor(secondaryColor);
+        amountCell.setPadding(paddingCell);
 
         PdfPTable pdfPTable = new PdfPTable(4);
-        pdfPTable.addCell("Fecha");
-        pdfPTable.addCell("Categoría");
-        pdfPTable.addCell("Descripción");
-        pdfPTable.addCell("Monto");
+        pdfPTable.setWidthPercentage(100);
+        pdfPTable.addCell(categoryCell);
+        pdfPTable.addCell(descriptionCell);
+        pdfPTable.addCell(dateCell);
+        pdfPTable.addCell(amountCell);
 
         list.forEach(expense -> {
-            pdfPTable.addCell(expense.getDate().toString());
             pdfPTable.addCell(expense.getCategory().getName());
             pdfPTable.addCell(expense.getDescription());
+            pdfPTable.addCell(DateUtils.parseToTableFormat(expense.getDate()));
             pdfPTable.addCell(expense.getAmount().toString());
         });
+
+        pdfPTable.addCell("TOTAL");
+        pdfPTable.addCell(String.valueOf(list.stream().mapToDouble(Expense::getAmount).sum()));
 
         String path = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS) + File.separator;
         String fileName = title.concat(LocalDateTime.now().toString()).concat(".pdf");
@@ -126,6 +173,9 @@ public class PDFGenerator {
         document.open();
         document.add(pTitle);
         document.add(pdfPTable);
+        document.addCreationDate();
+        document.addCreator(context.getString(R.string.app_name));
+        document.addTitle(title);
         document.close();
         viewFile(file, context);
     }

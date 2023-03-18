@@ -8,10 +8,14 @@ import java.util.regex.Pattern;
 
 public class DateUtils {
 
-    static DateTimeFormatter dtfDB = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-
     public static String parseToMonth(LocalDateTime localDateTime) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMM");
+
+        return dtf.format(localDateTime);
+    }
+
+    public static String parseToTableFormat(LocalDateTime localDateTime) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 
         return dtf.format(localDateTime);
     }
