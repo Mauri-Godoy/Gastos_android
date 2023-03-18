@@ -1,5 +1,6 @@
 package com.mg.gastos.entity;
 
+import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -17,4 +18,7 @@ public class Expense implements Serializable {
     private LocalDateTime date;
     private String description;
     private Double amount;
+
+    @Embedded
+    public Category category;
 }

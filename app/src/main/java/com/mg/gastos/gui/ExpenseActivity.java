@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mg.gastos.R;
+import com.mg.gastos.db.Database;
 import com.mg.gastos.gui.fragments.CreateFragment;
 import com.mg.gastos.gui.fragments.ExpenseHistoryFragment;
 import com.mg.gastos.gui.fragments.ExpenseStatsFragment;

@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.mg.gastos.R;
+import com.mg.gastos.db.CategoryRepository;
 import com.mg.gastos.db.Database;
 import com.mg.gastos.db.ExpenseRepository;
 import com.mg.gastos.entity.Category;
@@ -23,19 +24,33 @@ import com.mg.gastos.utils.Validator;
 
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class CreateFragment extends Fragment {
 
     private View root;
+    private Category category;
+    private CategoryRepository categoryRepository;
+    private ExpenseRepository expenseRepository;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_create, container, false);
 
+        categoryRepository = CategoryRepository.getInstance(requireContext());
+        expenseRepository = ExpenseRepository.getInstance(requireContext());
+
         setButtonAction();
 
-        createSelectCategory();
+        new Thread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        createSelectCategory();
+                    }
+                }
+        ).start();
 
         return root;
     }
@@ -52,11 +67,10 @@ public class CreateFragment extends Fragment {
         if (!Validator.passMinValue(amount, 0.0))
             return;
 
-        ExpenseRepository expenseRepository = ExpenseRepository.getInstance(requireContext());
-
         Expense expense = new Expense();
         expense.setAmount(Double.parseDouble(amount.getText().toString()));
         expense.setDescription(description.getText().toString());
+        expense.setCategory(category);
 
         expenseRepository.insert(expense);
 
@@ -77,19 +91,28 @@ public class CreateFragment extends Fragment {
     private void createSelectCategory() {
         MaterialSpinner materialSpinner = root.findViewById(R.id.spinner);
 
-        List<Category> categoryList = Database.getInstance(requireContext()).categoryDao().getAll();
+        List<Category> categoryList = categoryRepository.getAll();
 
-        List<String> strings = categoryList.stream().map(Category::getName).collect(Collectors.toList());
+        if (!categoryList.isEmpty()) {
+            int otherIndex = IntStream.range(0, categoryList.size())
+                    .filter(i -> categoryList.get(i).getCode().equals("OTHER"))
+                    .findFirst().orElse(0);
 
-        materialSpinner.setItems(strings);
-        materialSpinner.setSelectedIndex(strings.size() - 1);
-        materialSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+            category = categoryList.get(otherIndex);
 
-            @Override
-            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                Snackbar.make(view, categoryList.get(position).getCode() + item, Snackbar.LENGTH_LONG).show();
-            }
-        });
+            List<String> strings = categoryList.stream().map(Category::getName).collect(Collectors.toList());
+
+            materialSpinner.setItems(strings);
+            materialSpinner.setSelectedIndex(otherIndex);
+
+            materialSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+
+                @Override
+                public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                    category = categoryList.get(position);
+                }
+            });
+        }
     }
 
 }

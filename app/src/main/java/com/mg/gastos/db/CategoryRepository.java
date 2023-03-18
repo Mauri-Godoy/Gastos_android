@@ -1,6 +1,7 @@
 package com.mg.gastos.db;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.mg.gastos.entity.Category;
 
@@ -24,6 +25,15 @@ public class CategoryRepository {
     }
 
     public List<Category> getAll() {
-        return database.categoryDao().getAll();
+
+        List<Category> categoryList = database.categoryDao().getAll();
+
+        if (categoryList.isEmpty()) {
+            Log.i("DATABASE", "Insertando categorías");
+            database.categoryDao().insert(DefaultData.categoryList);
+            categoryList = database.categoryDao().getAll();
+        }
+
+        return categoryList;
     }
 }

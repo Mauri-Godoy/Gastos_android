@@ -1,5 +1,6 @@
 package com.mg.gastos;
 
+import com.mg.gastos.db.Database;
 import com.mg.gastos.gui.CustomActivityOnCrash;
 
 import cat.ereza.customactivityoncrash.config.CaocConfig;
@@ -17,11 +18,12 @@ public class Application extends android.app.Application {
         super.onCreate();
         singleton = this;
 
+        Database.getInstance(this);
+
         CaocConfig.Builder.create()
                 .backgroundMode(CaocConfig.BACKGROUND_MODE_SILENT)
                 .logErrorOnRestart(true)
                 .errorActivity(CustomActivityOnCrash.class)
                 .apply();
-
     }
 }

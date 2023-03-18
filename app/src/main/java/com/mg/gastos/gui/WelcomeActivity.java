@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.mg.gastos.R;
+import com.mg.gastos.db.Database;
 import com.mg.gastos.utils.Animator;
 
 public class WelcomeActivity extends AppCompatActivity {
