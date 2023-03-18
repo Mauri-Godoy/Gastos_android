@@ -10,12 +10,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.mg.gastos.R;
 import com.mg.gastos.entity.Expense;
-import com.mg.gastos.utils.Animator;
 import com.mg.gastos.utils.DateUtils;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import lombok.Getter;
@@ -43,12 +41,15 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
 
         Expense expense = expenses.get(position);
 
+        String category = expense.getCategory().getName();
+
         String description = expense.getDescription();
 
-        if (StringUtils.isNoneBlank(description)) {
-            holder.getDescription().setText(description);
-            Animator.show(holder.getDescription());
-        }
+        if (StringUtils.isNoneBlank(description))
+            category = category.concat(": " + description);
+
+        holder.getCategory().setText(category);
+
 
         String amount = "$ " + expense.getAmount();
         String dateStr = DateUtils.parseToSimpleDate(expense.getDate());
@@ -64,11 +65,11 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         @Getter
-        private final TextView description, date, amount;
+        private final TextView category, date, amount;
 
         public ViewHolder(View view) {
             super(view);
-            description = (TextView) view.findViewById(R.id.tv_description);
+            category = (TextView) view.findViewById(R.id.tv_category);
             date = (TextView) view.findViewById(R.id.tv_date);
             amount = (TextView) view.findViewById(R.id.tv_amount);
         }
