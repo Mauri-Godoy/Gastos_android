@@ -35,12 +35,12 @@ public class PDFGenerator {
 
         Canvas canvas = page1.getCanvas();
 
-        Resources res = context.getResources();
-        int id = R.drawable.ic_logo;
-        bitmap = BitmapFactory.decodeResource(res, id);
-
-        bitmapScale = Bitmap.createScaledBitmap(bitmap, 80, 80, false);
-        canvas.drawBitmap(bitmapScale, 368, 20, paint);
+//        Resources res = context.getResources();
+//        int id = R.drawable.ic_logo;
+//        bitmap = BitmapFactory.decodeResource(res, id);
+//
+//        bitmapScale = Bitmap.createScaledBitmap(bitmap, 80, 80, false);
+//        canvas.drawBitmap(bitmapScale, 368, 20, paint);
 
         title.setTypeface(Typeface.DEFAULT_BOLD);
         title.setTextSize(20);
