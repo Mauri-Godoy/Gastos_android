@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:background="@color/white"
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/margin_sm"
+    android:paddingTop="100dp"
     tools:context=".gui.fragments.CreateFragment">
 
 
@@ -15,14 +16,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/amount"
-        app:boxStrokeWidthFocused="@dimen/margin_xl"
         app:startIconDrawable="@drawable/ic_money">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_amount"
             android:layout_width="match_parent"
-            android:background="@color/none"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:inputType="numberDecimal"
             android:maxLength="12" />
 
@@ -32,8 +31,9 @@
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_sm"
         android:hint="@string/description"
+        android:layout_marginTop="@dimen/text_xl2"
+        android:paddingTop="@dimen/margin_xsm"
         app:counterMaxLength="@integer/descriptionMaxLength"
         app:startIconDrawable="@drawable/ic_short_text">
 
@@ -42,25 +42,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            android:background="@color/none"
             android:maxLength="@integer/descriptionMaxLength" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.jaredrummler.materialspinner.MaterialSpinner
-        android:id="@+id/spinner"
-        app:ms_arrow_tint="@color/secondary"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_marginTop="@dimen/margin_sm"
-        android:layout_height="wrap_content"/>
-
+        android:background="@drawable/border_outline"
+        android:padding="1.5dp"
+        android:layout_height="wrap_content">
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/spinner"
+            app:ms_hint="Categoría"
+            app:ms_arrow_tint="@color/secondary"
+            android:hint="@string/category"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </FrameLayout>
 
     <Button
         android:id="@+id/btn_upload"
         style="@style/btn.primary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_xl"
+        android:layout_marginTop="@dimen/margin_xl2"
         android:text="@string/upload" />
 
 </LinearLayout>

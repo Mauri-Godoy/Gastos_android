@@ -55,7 +55,6 @@
 
     <style name="TextInputLayout">
         <item name="startIconTint">@color/secondary</item>
-        <item name="android:paddingVertical">@dimen/margin_sm</item>
     </style>
 
     <style name="ActionBar" parent="@style/Widget.MaterialComponents.Toolbar">

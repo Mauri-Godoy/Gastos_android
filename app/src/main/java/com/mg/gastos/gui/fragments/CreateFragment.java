@@ -77,8 +77,9 @@ public class CreateFragment extends Fragment {
     private void createSelectCategory() {
         MaterialSpinner materialSpinner = root.findViewById(R.id.spinner);
 
-        List<String> strings = Database.getInstance(requireContext()).categoryDao().getAll()
-                .stream().map(Category::getName).collect(Collectors.toList());
+        List<Category> categoryList = Database.getInstance(requireContext()).categoryDao().getAll();
+
+        List<String> strings = categoryList.stream().map(Category::getName).collect(Collectors.toList());
 
         materialSpinner.setItems(strings);
         materialSpinner.setSelectedIndex(strings.size() - 1);
@@ -86,7 +87,7 @@ public class CreateFragment extends Fragment {
 
             @Override
             public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
-                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
+                Snackbar.make(view, categoryList.get(position).getCode() + item, Snackbar.LENGTH_LONG).show();
             }
         });
     }
