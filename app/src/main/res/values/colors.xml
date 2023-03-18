@@ -3,6 +3,7 @@
     <color name="secondary">#7D77D7</color>
     <color name="primary">#52C1B7</color>
     <color name="white">#fff</color>
+    <color name="none">#00FFFFFF</color>
 
     <color name="chart1">#D777A1</color>
     <color name="chart2">#D1D777</color>

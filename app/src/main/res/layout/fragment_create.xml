@@ -21,8 +21,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_amount"
             android:layout_width="match_parent"
+            android:background="@color/none"
             android:layout_height="wrap_content"
-            style="@style/editText"
             android:inputType="numberDecimal"
             android:maxLength="12" />
 
@@ -34,7 +34,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_sm"
         android:hint="@string/description"
-        app:counterEnabled="true"
         app:counterMaxLength="@integer/descriptionMaxLength"
         app:startIconDrawable="@drawable/ic_short_text">
 
@@ -43,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
-            style="@style/editText"
+            android:background="@color/none"
             android:maxLength="@integer/descriptionMaxLength" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -52,7 +51,9 @@
         android:id="@+id/spinner"
         app:ms_arrow_tint="@color/secondary"
         android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/margin_sm"
         android:layout_height="wrap_content"/>
+
 
     <Button
         android:id="@+id/btn_upload"

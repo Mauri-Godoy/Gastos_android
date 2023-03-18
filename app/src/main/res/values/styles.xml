@@ -55,6 +55,7 @@
 
     <style name="TextInputLayout">
         <item name="startIconTint">@color/secondary</item>
+        <item name="android:paddingVertical">@dimen/margin_sm</item>
     </style>
 
     <style name="ActionBar" parent="@style/Widget.MaterialComponents.Toolbar">
@@ -69,7 +70,4 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="editText">
-        <item name="android:background">@color/white</item>
-    </style>
 </resources>

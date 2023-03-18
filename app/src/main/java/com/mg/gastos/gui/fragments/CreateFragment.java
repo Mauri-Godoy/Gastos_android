@@ -7,8 +7,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -16,12 +14,15 @@ import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.mg.gastos.R;
+import com.mg.gastos.db.Database;
 import com.mg.gastos.db.ExpenseRepository;
 import com.mg.gastos.entity.Category;
 import com.mg.gastos.entity.Expense;
-import com.mg.gastos.gui.adapters.CategoryAdapter;
 import com.mg.gastos.utils.Animator;
 import com.mg.gastos.utils.Validator;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class CreateFragment extends Fragment {
 
@@ -45,8 +46,8 @@ public class CreateFragment extends Fragment {
         EditText description = root.findViewById(R.id.et_description);
         EditText amount = root.findViewById(R.id.et_amount);
 
-       if (!Validator.passRequired(amount))
-           return;
+        if (!Validator.passRequired(amount))
+            return;
 
         if (!Validator.passMinValue(amount, 0.0))
             return;
@@ -65,7 +66,7 @@ public class CreateFragment extends Fragment {
         amount.setText("");
     }
 
-    private void setButtonAction(){
+    private void setButtonAction() {
         Button button = root.findViewById(R.id.btn_upload);
         button.setOnClickListener(v -> {
             Animator.alpha(v);
@@ -73,13 +74,18 @@ public class CreateFragment extends Fragment {
         });
     }
 
-    private void createSelectCategory(){
+    private void createSelectCategory() {
         MaterialSpinner materialSpinner = root.findViewById(R.id.spinner);
 
-        materialSpinner.setItems("Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lollipop", "Marshmallow");
+        List<String> strings = Database.getInstance(requireContext()).categoryDao().getAll()
+                .stream().map(Category::getName).collect(Collectors.toList());
+
+        materialSpinner.setItems(strings);
+        materialSpinner.setSelectedIndex(strings.size() - 1);
         materialSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
 
-            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+            @Override
+            public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
                 Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
             }
         });
