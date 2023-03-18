@@ -159,7 +159,7 @@ public class PDFGenerator {
         pdfPTable.addCell(String.valueOf(list.stream().mapToDouble(Expense::getAmount).sum()));
 
         String path = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS) + File.separator;
-        String fileName = title.concat(LocalDateTime.now().toString()).concat(".pdf");
+        String fileName = title.concat("_" + LocalDateTime.now().toString()).concat(".pdf");
         File file = new File(path, fileName);
         Document document = new Document();
 
