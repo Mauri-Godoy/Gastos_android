@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Expense implements Serializable {
+public class Movement implements Serializable {
 
     @PrimaryKey(autoGenerate = true)
     private Integer id;

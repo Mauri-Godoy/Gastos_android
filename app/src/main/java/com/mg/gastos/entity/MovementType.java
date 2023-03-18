@@ -1,22 +1,19 @@
 package com.mg.gastos.entity;
 
 import androidx.annotation.NonNull;
-import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
-import java.io.Serializable;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
- @AllArgsConstructor
+@AllArgsConstructor
 @Entity
-public class Category implements Serializable {
+public class MovementType {
 
-    @PrimaryKey @NonNull
+    @PrimaryKey
+    @NonNull
     private String code;
     private String name;
-    public MovementType movementType;
 }

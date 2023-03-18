@@ -18,7 +18,6 @@ import androidx.core.content.FileProvider;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Phrase;
@@ -26,7 +25,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.mg.gastos.R;
-import com.mg.gastos.entity.Expense;
+import com.mg.gastos.entity.Movement;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -99,7 +98,7 @@ public class PDFGenerator {
         context.startActivity(intent);
     }
 
-    public static void generatePdfTable(Context context, List<Expense> list) throws DocumentException {
+    public static void generatePdfTable(Context context, List<Movement> list) throws DocumentException {
 
         if (list.isEmpty()) {
             Toast.makeText(context, "No hay datos para generar el documento.", Toast.LENGTH_SHORT).show();
@@ -148,15 +147,15 @@ public class PDFGenerator {
         pdfPTable.addCell(dateCell);
         pdfPTable.addCell(amountCell);
 
-        list.forEach(expense -> {
-            pdfPTable.addCell(expense.getCategory().getName());
-            pdfPTable.addCell(expense.getDescription());
-            pdfPTable.addCell(DateUtils.parseToTableFormat(expense.getDate()));
-            pdfPTable.addCell(expense.getAmount().toString());
+        list.forEach(movement -> {
+            pdfPTable.addCell(movement.getCategory().getName());
+            pdfPTable.addCell(movement.getDescription());
+            pdfPTable.addCell(DateUtils.parseToTableFormat(movement.getDate()));
+            pdfPTable.addCell(movement.getAmount().toString());
         });
 
         pdfPTable.addCell("TOTAL");
-        pdfPTable.addCell(String.valueOf(list.stream().mapToDouble(Expense::getAmount).sum()));
+        pdfPTable.addCell(String.valueOf(list.stream().mapToDouble(Movement::getAmount).sum()));
 
         String path = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS) + File.separator;
         String fileName = title.concat("_" + LocalDateTime.now().toString()).concat(".pdf");

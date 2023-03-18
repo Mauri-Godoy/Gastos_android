@@ -7,14 +7,12 @@ import com.mg.gastos.entity.Category;
 
 import java.util.List;
 
-public class CategoryRepository {
-
-    private final Database database;
+public class CategoryRepository extends Repository {
 
     private static CategoryRepository instance;
 
     private CategoryRepository(Context context) {
-        database = Database.getInstance(context);
+        super(context);
     }
 
     public static CategoryRepository getInstance(Context context) {
@@ -29,6 +27,9 @@ public class CategoryRepository {
         List<Category> categoryList = database.categoryDao().getAll();
 
         if (categoryList.isEmpty()) {
+            Log.i("DATABASE", "Insertando tipos de movimientos");
+            database.movementTypeDao().insert(DefaultData.movementTypeList);
+
             Log.i("DATABASE", "Insertando categorías");
             database.categoryDao().insert(DefaultData.categoryList);
             categoryList = database.categoryDao().getAll();

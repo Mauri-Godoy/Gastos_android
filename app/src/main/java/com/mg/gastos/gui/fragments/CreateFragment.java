@@ -11,14 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.mg.gastos.R;
 import com.mg.gastos.db.CategoryRepository;
-import com.mg.gastos.db.Database;
-import com.mg.gastos.db.ExpenseRepository;
+import com.mg.gastos.db.MovementRepository;
 import com.mg.gastos.entity.Category;
-import com.mg.gastos.entity.Expense;
+import com.mg.gastos.entity.Movement;
 import com.mg.gastos.utils.Animator;
 import com.mg.gastos.utils.Validator;
 
@@ -31,7 +29,7 @@ public class CreateFragment extends Fragment {
     private View root;
     private Category category;
     private CategoryRepository categoryRepository;
-    private ExpenseRepository expenseRepository;
+    private MovementRepository movementRepository;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,7 +37,7 @@ public class CreateFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_create, container, false);
 
         categoryRepository = CategoryRepository.getInstance(requireContext());
-        expenseRepository = ExpenseRepository.getInstance(requireContext());
+        movementRepository = MovementRepository.getInstance(requireContext());
 
         setButtonAction();
 
@@ -67,17 +65,17 @@ public class CreateFragment extends Fragment {
         if (!Validator.passMinValue(amount, 0.0))
             return;
 
-        Expense expense = new Expense();
-        expense.setAmount(Double.parseDouble(amount.getText().toString()));
-        expense.setDescription(description.getText().toString());
-        expense.setCategory(category);
+        Movement movement = new Movement();
+        movement.setAmount(Double.parseDouble(amount.getText().toString()));
+        movement.setDescription(description.getText().toString());
+        movement.setCategory(category);
 
-        expenseRepository.insert(expense);
+        movementRepository.insert(movement);
 
         Toast.makeText(requireContext(), "Cargado con exito!", Toast.LENGTH_SHORT).show();
 
         description.setText("");
-        amount.setText("");
+        amount.setText(R.string.default_amount);
     }
 
     private void setButtonAction() {

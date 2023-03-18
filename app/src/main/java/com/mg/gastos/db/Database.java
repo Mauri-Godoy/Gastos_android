@@ -10,21 +10,24 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
 import com.mg.gastos.converters.DateConverter;
+import com.mg.gastos.converters.TypeConverter;
 import com.mg.gastos.dao.CategoryDao;
-import com.mg.gastos.dao.ExpenseDao;
+import com.mg.gastos.dao.MovementDao;
+import com.mg.gastos.dao.MovementTypeDao;
 import com.mg.gastos.entity.Category;
-import com.mg.gastos.entity.Expense;
+import com.mg.gastos.entity.Movement;
+import com.mg.gastos.entity.MovementType;
 
-@androidx.room.Database(entities = {Expense.class, Category.class},
+@androidx.room.Database(entities = {Movement.class, Category.class, MovementType.class},
         version = DATABASE_VERSION, exportSchema = false)
-@TypeConverters(DateConverter.class)
+@TypeConverters({DateConverter.class, TypeConverter.class})
 public abstract class Database extends RoomDatabase {
-    public static final int DATABASE_VERSION = 2;
+    public static final int DATABASE_VERSION = 3;
     public static final String DATABASE_NAME = "gastos.db";
 
-    public abstract ExpenseDao expenseDao();
-
+    public abstract MovementDao movementDao();
     public abstract CategoryDao categoryDao();
+    public abstract MovementTypeDao movementTypeDao();
 
     static Database instance;
 

@@ -22,14 +22,18 @@
                 style="@style/TextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/amount"
-                app:startIconDrawable="@drawable/ic_money">
+                android:background="@color/none">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/et_amount"
-                    android:layout_width="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:inputType="numberDecimal"
+                    android:background="@color/none"
+                    android:drawableStart="@drawable/ic_money"
+                    android:textSize="@dimen/text_xl3"
+                    android:text="@string/default_amount"
                     android:maxLength="12" />
 
             </com.google.android.material.textfield.TextInputLayout>

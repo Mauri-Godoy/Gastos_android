@@ -18,9 +18,9 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
 import com.itextpdf.text.DocumentException;
 import com.mg.gastos.R;
-import com.mg.gastos.db.ExpenseRepository;
-import com.mg.gastos.entity.Expense;
-import com.mg.gastos.gui.ExpenseActivity;
+import com.mg.gastos.db.MovementRepository;
+import com.mg.gastos.entity.Movement;
+import com.mg.gastos.gui.MovementActivity;
 import com.mg.gastos.utils.Animator;
 import com.mg.gastos.utils.DateUtils;
 import com.mg.gastos.utils.PDFGenerator;
@@ -29,21 +29,21 @@ import com.mg.gastos.utils.PermissionHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExpenseStatsFragment extends Fragment {
+public class MovementStatsFragment extends Fragment {
 
     View root;
     private final int[] colors = new int[]{R.color.chart1, R.color.chart2, R.color.chart3, R.color.chart4,
             R.color.chart5, R.color.secondary, R.color.primary};
 
-    ExpenseRepository expenseRepository;
+    MovementRepository movementRepository;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_expense_stats, container, false);
+        root = inflater.inflate(R.layout.fragment_movement_stats, container, false);
 
         PermissionHelper.requestPermission(requireActivity());
-        expenseRepository = ExpenseRepository.getInstance(requireContext());
+        movementRepository = MovementRepository.getInstance(requireContext());
 
         createBarChart();
         setButtonAction();
@@ -56,7 +56,7 @@ public class ExpenseStatsFragment extends Fragment {
     private void createBarChart() {
         setUpLineChart();
         setData();
-        ExpenseActivity.setToolbarTitle("Gastos por Mes");
+        MovementActivity.setToolbarTitle("Gastos por Mes");
     }
 
     private void setUpLineChart() {
@@ -77,17 +77,17 @@ public class ExpenseStatsFragment extends Fragment {
 
         ArrayList<IBarDataSet> dataSets = new ArrayList<>();
 
-        List<Expense> list = expenseRepository.getMonthAndValues();
+        List<Movement> list = movementRepository.getMonthAndValues();
 
         for (int i = 0; list.size() > i; i++) {
 
             ArrayList<BarEntry> entries = new ArrayList<>();
 
-            Expense expense = list.get(i);
+            Movement movement = list.get(i);
 
-            entries.add(new BarEntry(i, expense.getAmount().floatValue()));
+            entries.add(new BarEntry(i, movement.getAmount().floatValue()));
 
-            BarDataSet barDataSet = new BarDataSet(entries, DateUtils.parseToMonth(expense.getDate()).toUpperCase());
+            BarDataSet barDataSet = new BarDataSet(entries, DateUtils.parseToMonth(movement.getDate()).toUpperCase());
 
             barDataSet.setColor(requireContext().getColor(colors[i]));
 
@@ -116,7 +116,7 @@ public class ExpenseStatsFragment extends Fragment {
             if (PermissionHelper.checkPermission(requireActivity())) {
                 v.setEnabled(false);
                 try {
-                    PDFGenerator.generatePdfTable(requireContext(), expenseRepository.getAll());
+                    PDFGenerator.generatePdfTable(requireContext(), movementRepository.getAll());
                 } catch (DocumentException e) {
                     e.printStackTrace();
                 }

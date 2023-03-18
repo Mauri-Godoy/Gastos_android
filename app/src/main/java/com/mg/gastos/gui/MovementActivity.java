@@ -8,19 +8,18 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mg.gastos.R;
-import com.mg.gastos.db.Database;
 import com.mg.gastos.gui.fragments.CreateFragment;
-import com.mg.gastos.gui.fragments.ExpenseHistoryFragment;
-import com.mg.gastos.gui.fragments.ExpenseStatsFragment;
+import com.mg.gastos.gui.fragments.MovementHistoryFragment;
+import com.mg.gastos.gui.fragments.MovementStatsFragment;
 import com.mg.gastos.gui.fragments.UnderConstructionFragment;
 import com.mg.gastos.utils.Animator;
 import com.mg.gastos.utils.PermissionHelper;
 
-public class ExpenseActivity extends AppCompatActivity {
+public class MovementActivity extends AppCompatActivity {
 
-    private static ExpenseActivity instance = null;
+    private static MovementActivity instance = null;
 
-    public static ExpenseActivity getInstance() {
+    public static MovementActivity getInstance() {
         return instance;
     }
 
@@ -31,7 +30,7 @@ public class ExpenseActivity extends AppCompatActivity {
 
         PermissionHelper.requestPermission(this);
 
-        setContentView(R.layout.activity_expense);
+        setContentView(R.layout.activity_movement);
         setNavBottomData();
     }
 
@@ -52,14 +51,14 @@ public class ExpenseActivity extends AppCompatActivity {
             String title = item.getTitle().toString();
 
             switch (item.getItemId()) {
-                case R.id.createExpenseItem:
+                case R.id.createMovementItem:
                     replaceFragment(new CreateFragment(), title);
                     break;
-                case R.id.expenseStatsItem:
-                    replaceFragment(new ExpenseStatsFragment(), title);
+                case R.id.movementStatsItem:
+                    replaceFragment(new MovementStatsFragment(), title);
                     break;
-                case R.id.expenseHistoryItem:
-                    replaceFragment(new ExpenseHistoryFragment(), title);
+                case R.id.movementHistoryItem:
+                    replaceFragment(new MovementHistoryFragment(), title);
                     break;
                 default:
                     replaceFragment(new UnderConstructionFragment(), title);

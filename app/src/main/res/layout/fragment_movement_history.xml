@@ -5,10 +5,10 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".gui.fragments.ExpenseHistoryFragment">
+    tools:context=".gui.fragments.MovementHistoryFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_expenseList"
+        android:id="@+id/rv_movementList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="@dimen/margin_xl2"

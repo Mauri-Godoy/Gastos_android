@@ -12,9 +12,6 @@ import java.util.List;
 public interface CategoryDao {
 
     @Insert
-    void insert(Category category);
-
-    @Insert
     void insert(List<Category> categoryList);
 
     @Query("SELECT * FROM Category")

@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mg.gastos.R;
-import com.mg.gastos.entity.Expense;
+import com.mg.gastos.entity.Movement;
 import com.mg.gastos.utils.DateUtils;
 
 import org.apache.commons.lang3.StringUtils;
@@ -18,12 +18,12 @@ import java.util.List;
 
 import lombok.Getter;
 
-public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.ViewHolder> {
+public class MovementListAdapter extends RecyclerView.Adapter<MovementListAdapter.ViewHolder> {
 
-    private final List<Expense> expenses;
+    private final List<Movement> movementList;
 
-    public ExpenseListAdapter(List<Expense> expenses) {
-        this.expenses = expenses;
+    public MovementListAdapter(List<Movement> movementList) {
+        this.movementList = movementList;
     }
 
     @NonNull
@@ -31,7 +31,7 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Create a new view, which defines the UI of the list item
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.expense_list, parent, false);
+                .inflate(R.layout.movement_list, parent, false);
 
         return new ViewHolder(view);
     }
@@ -39,11 +39,11 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        Expense expense = expenses.get(position);
+        Movement movement = movementList.get(position);
 
-        String category = expense.getCategory().getName();
+        String category = movement.getCategory().getName();
 
-        String description = expense.getDescription();
+        String description = movement.getDescription();
 
         if (StringUtils.isNoneBlank(description))
             category = category.concat(": " + description);
@@ -51,8 +51,8 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
         holder.getCategory().setText(category);
 
 
-        String amount = "$ " + expense.getAmount();
-        String dateStr = DateUtils.parseToSimpleDate(expense.getDate());
+        String amount = "$ " + movement.getAmount();
+        String dateStr = DateUtils.parseToSimpleDate(movement.getDate());
 
         holder.getDate().setText(dateStr);
         holder.getAmount().setText(amount);
@@ -60,7 +60,7 @@ public class ExpenseListAdapter extends RecyclerView.Adapter<ExpenseListAdapter.
 
     @Override
     public int getItemCount() {
-        return expenses.size();
+        return movementList.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
