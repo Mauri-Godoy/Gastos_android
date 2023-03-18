@@ -20,6 +20,7 @@ public interface ExpenseDao {
     @Query("SELECT SUM(amount) FROM Expense")
     double getTotal();
 
-    @Query("SELECT date, SUM(amount) as 'amount' FROM Expense GROUP BY SUBSTR(date, 0, 8)")
+    @Query("SELECT 0 as 'id', '' as 'description', date, SUM(amount) as 'amount' " +
+            "FROM Expense GROUP BY SUBSTR(date, 0, 8)")
     List<Expense>  getMonthAndValues();
 }

@@ -14,14 +14,15 @@
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:boxStrokeWidthFocused="@dimen/margin_xl"
         android:hint="@string/amount"
+        app:boxStrokeWidthFocused="@dimen/margin_xl"
         app:startIconDrawable="@drawable/ic_money">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            style="@style/editText"
             android:inputType="numberDecimal"
             android:maxLength="12" />
 
@@ -42,9 +43,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
+            style="@style/editText"
             android:maxLength="@integer/descriptionMaxLength" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.jaredrummler.materialspinner.MaterialSpinner
+        android:id="@+id/spinner"
+        app:ms_arrow_tint="@color/secondary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:id="@+id/btn_upload"

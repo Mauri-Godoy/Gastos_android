@@ -7,13 +7,19 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.mg.gastos.R;
 import com.mg.gastos.db.ExpenseRepository;
+import com.mg.gastos.entity.Category;
 import com.mg.gastos.entity.Expense;
+import com.mg.gastos.gui.adapters.CategoryAdapter;
 import com.mg.gastos.utils.Animator;
 import com.mg.gastos.utils.Validator;
 
@@ -27,6 +33,8 @@ public class CreateFragment extends Fragment {
         root = inflater.inflate(R.layout.fragment_create, container, false);
 
         setButtonAction();
+
+        createSelectCategory();
 
         return root;
     }
@@ -65,5 +73,16 @@ public class CreateFragment extends Fragment {
         });
     }
 
+    private void createSelectCategory(){
+        MaterialSpinner materialSpinner = root.findViewById(R.id.spinner);
+
+        materialSpinner.setItems("Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lollipop", "Marshmallow");
+        materialSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener<String>() {
+
+            @Override public void onItemSelected(MaterialSpinner view, int position, long id, String item) {
+                Snackbar.make(view, "Clicked " + item, Snackbar.LENGTH_LONG).show();
+            }
+        });
+    }
 
 }

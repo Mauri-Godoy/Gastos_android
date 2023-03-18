@@ -68,4 +68,8 @@
     <style name="TextAppearance.LL.Toolbar" parent="@style/TextAppearance.Widget.AppCompat.Toolbar.Title">
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="editText">
+        <item name="android:background">@color/white</item>
+    </style>
 </resources>

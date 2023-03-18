@@ -7,12 +7,10 @@ import android.content.Context;
 import androidx.room.Room;
 
 import com.mg.gastos.entity.Expense;
-import com.mg.gastos.utils.DateUtils;
 
 import org.apache.commons.math3.util.Precision;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public class ExpenseRepository {
@@ -22,7 +20,7 @@ public class ExpenseRepository {
     private static ExpenseRepository instance;
 
     private ExpenseRepository(Context context) {
-        database = Room.databaseBuilder(context, Database.class, DATABASE_NAME).fallbackToDestructiveMigration().allowMainThreadQueries().build();
+        database = Database.getInstance(context);
     }
 
     public static ExpenseRepository getInstance(Context context) {
@@ -34,18 +32,18 @@ public class ExpenseRepository {
 
     public void insert(final Expense expense) {
         expense.setDate(LocalDateTime.now());
-        database.daoAccess().insert(expense);
+        database.expenseDao().insert(expense);
     }
 
     public List<Expense> getAll() {
-        return database.daoAccess().getAll();
+        return database.expenseDao().getAll();
     }
 
     public Double getTotal() {
-        return Precision.round(database.daoAccess().getTotal(), 2);
+        return Precision.round(database.expenseDao().getTotal(), 2);
     }
 
     public List<Expense> getMonthAndValues() {
-        return database.daoAccess().getMonthAndValues();
+        return database.expenseDao().getMonthAndValues();
     }
 }
