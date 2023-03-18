@@ -67,6 +67,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_xl2"
+        android:drawableEnd="@drawable/ic_upload"
+        android:paddingHorizontal="@dimen/margin_sm"
         android:text="@string/upload" />
 
 </LinearLayout>

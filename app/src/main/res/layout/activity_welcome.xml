@@ -30,6 +30,7 @@
         android:layout_marginTop="@dimen/margin_md"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:drawableEnd="@drawable/ic_navigate_next"
         style="@style/btn.primary"
         android:text="Continuar"
         android:layout_gravity="center"

@@ -29,7 +29,10 @@
             android:gravity="start"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="TOTAL" />
+            android:text="TOTAL"
+            android:drawablePadding="@dimen/margin_sm"
+            app:drawableTint="@color/white"
+            app:drawableStartCompat="@drawable/ic_account_balance" />
 
         <TextView
             android:id="@+id/tv_total"
