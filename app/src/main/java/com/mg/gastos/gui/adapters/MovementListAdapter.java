@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mg.gastos.R;
@@ -52,11 +53,15 @@ public class MovementListAdapter extends RecyclerView.Adapter<MovementListAdapte
 
 
         String dateStr = DateUtils.parseToSimpleDate(movement.getDate());
-
-        String amount = (movement.isNegativeAmount() ? "- " : "") + "$" + movement.getAmount();
         holder.getDate().setText(dateStr);
 
-        holder.getAmount().setText(amount);
+        String amount = (movement.isNegativeAmount() ? "- " : "") + "$" + movement.getAmount();
+        TextView tvAmount = holder.getAmount();
+        tvAmount.setText(amount);
+        if (!movement.isNegativeAmount())
+            tvAmount.setTextColor(ContextCompat.getColor(tvAmount.getContext(), R.color.success));
+
+
     }
 
     @Override
