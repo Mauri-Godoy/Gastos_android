@@ -19,6 +19,8 @@
         android:checked="true"
         android:paddingHorizontal="@dimen/margin_sm"
         android:textColor="@color/secondary"
+        android:drawableEnd="@drawable/ic_currency_exchange"
+        android:drawableTint="@color/secondary"
         android:textOff="@string/income"
         android:textOn="@string/outflow"
         android:textStyle="bold" />

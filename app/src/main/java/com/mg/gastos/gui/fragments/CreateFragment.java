@@ -73,6 +73,7 @@ public class CreateFragment extends Fragment {
         AppCompatToggleButton switchCompat = root.findViewById(R.id.toggle_value);
         switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
             negativeValue = isChecked;
+            setToolbarTitle();
             setCategoriesInSelect();
         });
     }
