@@ -17,10 +17,7 @@ public interface MovementDao {
     @Query("SELECT * FROM Movement ORDER BY id desc")
     List<Movement> getAll();
 
-    @Query("SELECT SUM(amount) FROM Movement")
-    double getTotal();
-
-    @Query("SELECT 0 as 'id', '' as 'description', date, SUM(amount) as 'amount' " +
+    @Query("SELECT 0 as 'id', '' as 'description', date, SUM(amount) as 'amount', '' as 'negativeAmount' " +
             "FROM Movement GROUP BY SUBSTR(date, 0, 8)")
     List<Movement>  getMonthAndValues();
 }

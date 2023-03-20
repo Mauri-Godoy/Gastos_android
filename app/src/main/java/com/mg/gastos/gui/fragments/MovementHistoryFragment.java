@@ -45,6 +45,7 @@ public class MovementHistoryFragment extends Fragment {
     private void setTotal() {
         TextView textView = root.findViewById(R.id.tv_total);
         Double total = MovementRepository.getInstance(requireContext()).getTotal();
-        textView.setText("$ " + total);
+        String totalStr = (total < 0 ? "- " : "") + "$" + (Math.abs(total));
+        textView.setText(totalStr);
     }
 }

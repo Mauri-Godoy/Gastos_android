@@ -51,10 +51,11 @@ public class MovementListAdapter extends RecyclerView.Adapter<MovementListAdapte
         holder.getCategory().setText(category);
 
 
-        String amount = "$ " + movement.getAmount();
         String dateStr = DateUtils.parseToSimpleDate(movement.getDate());
 
+        String amount = (movement.isNegativeAmount() ? "- " : "") + "$" + movement.getAmount();
         holder.getDate().setText(dateStr);
+
         holder.getAmount().setText(amount);
     }
 

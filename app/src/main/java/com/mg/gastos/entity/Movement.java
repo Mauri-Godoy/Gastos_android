@@ -18,6 +18,7 @@ public class Movement implements Serializable {
     private LocalDateTime date;
     private String description;
     private Double amount;
+    private boolean negativeAmount;
 
     @Embedded
     public Category category;

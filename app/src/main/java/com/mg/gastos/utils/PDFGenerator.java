@@ -105,7 +105,7 @@ public class PDFGenerator {
             return;
         }
 
-        String title = "Historial de gastos".toUpperCase();
+        String title = "Historial de movimientos".toUpperCase();
         BaseColor secondaryColor = new BaseColor(125, 119, 215);
 
         Font fontTitle = new Font();
@@ -140,22 +140,33 @@ public class PDFGenerator {
         amountCell.setBackgroundColor(secondaryColor);
         amountCell.setPadding(paddingCell);
 
-        PdfPTable pdfPTable = new PdfPTable(4);
-        pdfPTable.setWidthPercentage(100);
-        pdfPTable.addCell(categoryCell);
-        pdfPTable.addCell(descriptionCell);
-        pdfPTable.addCell(dateCell);
-        pdfPTable.addCell(amountCell);
+        PdfPTable historyTable = new PdfPTable(4);
+        historyTable.setWidthPercentage(100);
+        historyTable.addCell(categoryCell);
+        historyTable.addCell(descriptionCell);
+        historyTable.addCell(dateCell);
+        historyTable.addCell(amountCell);
 
         list.forEach(movement -> {
-            pdfPTable.addCell(movement.getCategory().getName());
-            pdfPTable.addCell(movement.getDescription());
-            pdfPTable.addCell(DateUtils.parseToTableFormat(movement.getDate()));
-            pdfPTable.addCell(movement.getAmount().toString());
+            historyTable.addCell(movement.getCategory().getName());
+            historyTable.addCell(movement.getDescription());
+            historyTable.addCell(DateUtils.parseToTableFormat(movement.getDate()));
+            historyTable.addCell((movement.isNegativeAmount() ? "-" : "") + movement.getAmount());
         });
 
-        pdfPTable.addCell("TOTAL");
-        pdfPTable.addCell(String.valueOf(list.stream().mapToDouble(Movement::getAmount).sum()));
+        PdfPCell totalCell = new PdfPCell(new Phrase("TOTAL", fontWhite));
+        totalCell.setBackgroundColor(secondaryColor);
+        PdfPCell emptyCell = new PdfPCell(new Phrase(""));
+        emptyCell.setBackgroundColor(secondaryColor);
+        PdfPCell totalValueCell = new PdfPCell(new Phrase(String.valueOf(list.stream().mapToDouble(movement ->
+                movement.isNegativeAmount() ? (movement.getAmount() * -1) : movement.getAmount()
+        ).sum()),fontWhite));
+        totalValueCell.setBackgroundColor(secondaryColor);
+
+        historyTable.addCell(totalCell);
+        historyTable.addCell(emptyCell);
+        historyTable.addCell(emptyCell);
+        historyTable.addCell(totalValueCell);
 
         String path = context.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS) + File.separator;
         String fileName = title.concat("_" + LocalDateTime.now().toString()).concat(".pdf");
@@ -171,7 +182,7 @@ public class PDFGenerator {
 
         document.open();
         document.add(pTitle);
-        document.add(pdfPTable);
+        document.add(historyTable);
         document.addCreationDate();
         document.addCreator(context.getString(R.string.app_name));
         document.addTitle(title);

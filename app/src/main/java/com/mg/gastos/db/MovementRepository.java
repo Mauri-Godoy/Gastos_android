@@ -18,8 +18,7 @@ public class MovementRepository extends Repository {
     }
 
     public static MovementRepository getInstance(Context context) {
-        if (instance == null)
-            instance = new MovementRepository(context);
+        if (instance == null) instance = new MovementRepository(context);
 
         return instance;
     }
@@ -34,7 +33,9 @@ public class MovementRepository extends Repository {
     }
 
     public Double getTotal() {
-        return Precision.round(database.movementDao().getTotal(), 2);
+        List<Movement> movementList = database.movementDao().getAll();
+
+        return movementList.stream().mapToDouble(movement -> movement.isNegativeAmount() ? (movement.getAmount() * -1) : movement.getAmount()).sum();
     }
 
     public List<Movement> getMonthAndValues() {

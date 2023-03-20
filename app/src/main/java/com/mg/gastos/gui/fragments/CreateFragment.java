@@ -108,6 +108,7 @@ public class CreateFragment extends Fragment {
         movement.setAmount(Double.parseDouble(amount.getText().toString()));
         movement.setDescription(description.getText().toString());
         movement.setCategory(category);
+        movement.setNegativeAmount(true);
 
         movementRepository.insert(movement);
 
