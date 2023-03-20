@@ -10,10 +10,12 @@ public class DefaultData {
 
     public static MovementType moneyOutflow = new MovementType("MONEY_OUTFLOW", "Ingreso de dinero");
     public static MovementType moneyIncome = new MovementType("MONEY_INCOME", "Egreso de dinero");
+    public static MovementType any = new MovementType("ANY", "Cualquiera");
 
     public static List<MovementType> movementTypeList = Arrays.asList(
             moneyOutflow,
-            moneyIncome
+            moneyIncome,
+            any
     );
 
     public static List<Category> categoryList = Arrays.asList(
@@ -24,9 +26,9 @@ public class DefaultData {
             new Category("CLOTHES", "Vestimenta", moneyOutflow),
             new Category("HEALTH_AND_HIGIENE", "Salud e higiene", moneyOutflow),
             new Category("FUN", "Diversión", moneyOutflow),
-            new Category("OTHER", "Otros", moneyOutflow),
             new Category("INGRESO_FIJO", "Fijo", moneyIncome),
-            new Category("INGRESO_VARIABLE", "Variable", moneyIncome)
+            new Category("INGRESO_VARIABLE", "Variable", moneyIncome),
+            new Category("OTHER", "Otros", any)
     );
 
 }

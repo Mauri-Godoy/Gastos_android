@@ -2,6 +2,7 @@ package com.mg.gastos.gui.fragments;
 
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -35,7 +36,8 @@ public class CreateFragment extends Fragment {
     private Category category;
     private CategoryRepository categoryRepository;
     private MovementRepository movementRepository;
-    EditText amount;
+    private EditText amount;
+    boolean negativeValue = true;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,11 +47,12 @@ public class CreateFragment extends Fragment {
         movementRepository = MovementRepository.getInstance(requireContext());
 
         setButtonAction();
+        setSwitchAction();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                createSelectCategory();
+                setCategoriesInSelect();
             }
         }).start();
 
@@ -58,6 +61,13 @@ public class CreateFragment extends Fragment {
         return root;
     }
 
+    private void setSwitchAction() {
+        SwitchCompat switchCompat = root.findViewById(R.id.sw_value);
+        switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            negativeValue = isChecked;
+            setCategoriesInSelect();
+        });
+    }
 
     private void setChangeListener() {
         amount = root.findViewById(R.id.et_amount);
@@ -104,7 +114,7 @@ public class CreateFragment extends Fragment {
         movement.setAmount(Double.parseDouble(amount.getText().toString()));
         movement.setDescription(description.getText().toString());
         movement.setCategory(category);
-        movement.setNegativeAmount(true);
+        movement.setNegativeAmount(negativeValue);
 
         movementRepository.insert(movement);
 
@@ -122,10 +132,12 @@ public class CreateFragment extends Fragment {
         });
     }
 
-    private void createSelectCategory() {
+    private void setCategoriesInSelect() {
         MaterialSpinner materialSpinner = root.findViewById(R.id.spinner);
 
-        List<Category> categoryList = categoryRepository.getByTypeCode(DefaultData.moneyOutflow.getCode());
+        String typeCode = negativeValue ? DefaultData.moneyOutflow.getCode() : DefaultData.moneyIncome.getCode();
+
+        List<Category> categoryList = categoryRepository.getByTypeCode(typeCode);
 
         if (!categoryList.isEmpty()) {
             int otherIndex = IntStream.range(0, categoryList.size()).filter(i -> categoryList.get(i).getCode().equals("OTHER")).findFirst().orElse(0);

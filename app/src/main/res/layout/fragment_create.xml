@@ -10,71 +10,76 @@
     android:paddingTop="50dp"
     tools:context=".gui.fragments.CreateFragment">
 
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/sw_value"
+        android:checked="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/none">
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/none">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_amount"
-                    android:layout_gravity="center"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:inputType="number"
-                    android:background="@color/none"
-                    android:drawableStart="@drawable/ic_money"
-                    android:textSize="60sp"
-                    android:text="@string/default_amount"
-                    android:cursorVisible="false"
-                    android:maxLength="9" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:background="@color/none"
+            android:cursorVisible="false"
+            android:drawableStart="@drawable/ic_money"
+            android:inputType="number"
+            android:maxLength="9"
+            android:text="@string/default_amount"
+            android:textSize="60sp" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/TextInputLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/text_xl2"
-                android:hint="@string/description"
-                android:paddingTop="@dimen/margin_xsm"
-                app:counterMaxLength="@integer/descriptionMaxLength"
-                app:startIconDrawable="@drawable/ic_short_text">
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_xl2"
+        android:hint="@string/description"
+        android:paddingTop="@dimen/margin_xsm"
+        app:counterMaxLength="@integer/descriptionMaxLength"
+        app:startIconDrawable="@drawable/ic_short_text">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:maxLength="@integer/descriptionMaxLength" />
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLength="@integer/descriptionMaxLength" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_sm"
-                android:background="@drawable/border_outline"
-                android:padding="1.5dp">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_sm"
+        android:background="@drawable/border_outline"
+        android:padding="1.5dp">
 
-                <com.jaredrummler.materialspinner.MaterialSpinner
-                    android:id="@+id/spinner"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/category"
-                    app:ms_arrow_tint="@color/secondary"
-                    app:ms_hint="Categoría" />
-            </FrameLayout>
+        <com.jaredrummler.materialspinner.MaterialSpinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/category"
+            app:ms_arrow_tint="@color/secondary"
+            app:ms_hint="Categoría" />
+    </FrameLayout>
 
-            <Button
-                android:id="@+id/btn_upload"
-                style="@style/btn.primary"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_xl2"
-                android:drawableEnd="@drawable/ic_upload"
-                android:paddingHorizontal="@dimen/margin_sm"
-                android:text="@string/upload" />
+    <Button
+        android:id="@+id/btn_upload"
+        style="@style/btn.primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_xl2"
+        android:drawableEnd="@drawable/ic_upload"
+        android:paddingHorizontal="@dimen/margin_sm"
+        android:text="@string/upload" />
 
 </LinearLayout>
