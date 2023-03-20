@@ -7,14 +7,21 @@
     android:background="@color/white"
     android:orientation="vertical"
     android:paddingHorizontal="@dimen/margin_sm"
-    android:paddingTop="50dp"
+    android:paddingTop="@dimen/margin_md"
     tools:context=".gui.fragments.CreateFragment">
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/sw_value"
+    <androidx.appcompat.widget.AppCompatToggleButton
+        android:id="@+id/toggle_value"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_xl"
+        android:background="@drawable/stroke_bottom_secondary"
         android:checked="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:paddingHorizontal="@dimen/margin_sm"
+        android:textColor="@color/secondary"
+        android:textOff="@string/income"
+        android:textOn="@string/outflow"
+        android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextInputLayout"

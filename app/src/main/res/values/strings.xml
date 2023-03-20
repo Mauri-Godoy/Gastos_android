@@ -18,4 +18,6 @@
     <string name="category">Categoría</string>
     <string name="generate_pdf">Generar PDF</string>
     <string name="default_amount">0</string>
+    <string name="income">Cambiar a gasto</string>
+    <string name="outflow">Cambiar a ingreso</string>
 </resources>

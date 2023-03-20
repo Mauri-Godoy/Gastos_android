@@ -47,6 +47,24 @@
         <item name="android:drawableTint">@color/white</item>
     </style>
 
+    <style name="btn.secondary" parent="btn">
+        <item name="android:background">@drawable/rounded_secondary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:drawableTint">@color/white</item>
+    </style>
+
+    <style name="btn.success" parent="btn">
+        <item name="android:background">@drawable/rounded_success</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:drawableTint">@color/white</item>
+    </style>
+
+    <style name="btn.danger" parent="btn">
+        <item name="android:background">@drawable/rounded_danger</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:drawableTint">@color/white</item>
+    </style>
+
     <style name="BottomNavigation">
         <item name="android:background">@color/white</item>
         <item name="itemIconTint">@color/secondary</item>

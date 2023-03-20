@@ -1,8 +1,14 @@
 package com.mg.gastos.gui.fragments;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.appcompat.content.res.AppCompatResources;
+import androidx.appcompat.widget.AppCompatToggleButton;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -21,6 +27,7 @@ import com.mg.gastos.db.DefaultData;
 import com.mg.gastos.db.MovementRepository;
 import com.mg.gastos.entity.Category;
 import com.mg.gastos.entity.Movement;
+import com.mg.gastos.gui.MovementActivity;
 import com.mg.gastos.utils.Animator;
 import com.mg.gastos.utils.Validator;
 
@@ -48,6 +55,7 @@ public class CreateFragment extends Fragment {
 
         setButtonAction();
         setSwitchAction();
+        setToolbarTitle();
 
         new Thread(new Runnable() {
             @Override
@@ -62,11 +70,15 @@ public class CreateFragment extends Fragment {
     }
 
     private void setSwitchAction() {
-        SwitchCompat switchCompat = root.findViewById(R.id.sw_value);
+        AppCompatToggleButton switchCompat = root.findViewById(R.id.toggle_value);
         switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
             negativeValue = isChecked;
             setCategoriesInSelect();
         });
+    }
+
+    private void setToolbarTitle() {
+        MovementActivity.setToolbarTitle("Nuevo ".concat(negativeValue ? "gasto" : "ingreso"));
     }
 
     private void setChangeListener() {
