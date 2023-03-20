@@ -8,8 +8,8 @@ import java.util.List;
 
 public class DefaultData {
 
-    static MovementType moneyOutflow = new MovementType("MONEY_OUTFLOW", "Ingreso de dinero");
-    static MovementType moneyIncome = new MovementType("MONEY_INCOME", "Egreso de dinero");
+    public static MovementType moneyOutflow = new MovementType("MONEY_OUTFLOW", "Ingreso de dinero");
+    public static MovementType moneyIncome = new MovementType("MONEY_INCOME", "Egreso de dinero");
 
     public static List<MovementType> movementTypeList = Arrays.asList(
             moneyOutflow,

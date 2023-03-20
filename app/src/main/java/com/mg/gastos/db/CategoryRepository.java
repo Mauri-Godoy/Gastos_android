@@ -22,9 +22,9 @@ public class CategoryRepository extends Repository {
         return instance;
     }
 
-    public List<Category> getAll() {
+    public List<Category> getByTypeCode(String typeCode) {
 
-        List<Category> categoryList = database.categoryDao().getAll();
+        List<Category> categoryList = database.categoryDao().getByTypeCode(typeCode);
 
         if (categoryList.isEmpty()) {
             Log.i("DATABASE", "Insertando tipos de movimientos");
@@ -32,7 +32,7 @@ public class CategoryRepository extends Repository {
 
             Log.i("DATABASE", "Insertando categorías");
             database.categoryDao().insert(DefaultData.categoryList);
-            categoryList = database.categoryDao().getAll();
+            categoryList = database.categoryDao().getByTypeCode(typeCode);
         }
 
         return categoryList;

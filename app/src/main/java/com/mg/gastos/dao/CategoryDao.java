@@ -14,6 +14,6 @@ public interface CategoryDao {
     @Insert
     void insert(List<Category> categoryList);
 
-    @Query("SELECT * FROM Category")
-    List<Category> getAll();
+    @Query("SELECT * FROM Category WHERE movementType = :typeCode")
+    List<Category> getByTypeCode(String typeCode);
 }

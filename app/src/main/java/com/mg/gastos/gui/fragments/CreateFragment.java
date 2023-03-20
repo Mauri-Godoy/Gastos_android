@@ -1,18 +1,14 @@
 package com.mg.gastos.gui.fragments;
 
-import android.content.Context;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
-import android.text.Selection;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,6 +16,7 @@ import android.widget.Toast;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.mg.gastos.R;
 import com.mg.gastos.db.CategoryRepository;
+import com.mg.gastos.db.DefaultData;
 import com.mg.gastos.db.MovementRepository;
 import com.mg.gastos.entity.Category;
 import com.mg.gastos.entity.Movement;
@@ -27,7 +24,6 @@ import com.mg.gastos.utils.Animator;
 import com.mg.gastos.utils.Validator;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.math3.util.Precision;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -129,7 +125,7 @@ public class CreateFragment extends Fragment {
     private void createSelectCategory() {
         MaterialSpinner materialSpinner = root.findViewById(R.id.spinner);
 
-        List<Category> categoryList = categoryRepository.getAll();
+        List<Category> categoryList = categoryRepository.getByTypeCode(DefaultData.moneyOutflow.getCode());
 
         if (!categoryList.isEmpty()) {
             int otherIndex = IntStream.range(0, categoryList.size()).filter(i -> categoryList.get(i).getCode().equals("OTHER")).findFirst().orElse(0);
