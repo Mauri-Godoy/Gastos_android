@@ -38,7 +38,7 @@ public class MovementRepository extends Repository {
         return movementList.stream().mapToDouble(movement -> movement.isNegativeAmount() ? (movement.getAmount() * -1) : movement.getAmount()).sum();
     }
 
-    public List<Movement> getMonthAndValues() {
-        return database.movementDao().getMonthAndValues();
+    public List<Movement> getMonthAndValues(boolean negaviteAmount) {
+        return database.movementDao().getMonthAndValues(negaviteAmount);
     }
 }

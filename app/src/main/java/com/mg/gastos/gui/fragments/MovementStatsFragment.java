@@ -69,6 +69,7 @@ public class MovementStatsFragment extends Fragment {
         chart.setPinchZoom(false);
         chart.setDrawGridBackground(false);
         chart.getAxisRight().setEnabled(false);
+        chart.getAxisLeft().setAxisMinimum(100f);
         chart.getXAxis().setEnabled(false);
         chart.getLegend().setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
     }
@@ -77,7 +78,7 @@ public class MovementStatsFragment extends Fragment {
 
         ArrayList<IBarDataSet> dataSets = new ArrayList<>();
 
-        List<Movement> list = movementRepository.getMonthAndValues();
+        List<Movement> list = movementRepository.getMonthAndValues(true);
 
         for (int i = 0; list.size() > i; i++) {
 

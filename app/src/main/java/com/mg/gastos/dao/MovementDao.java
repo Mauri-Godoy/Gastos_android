@@ -18,6 +18,6 @@ public interface MovementDao {
     List<Movement> getAll();
 
     @Query("SELECT 0 as 'id', '' as 'description', date, SUM(amount) as 'amount', '' as 'negativeAmount' " +
-            "FROM Movement GROUP BY SUBSTR(date, 0, 8)")
-    List<Movement>  getMonthAndValues();
+            "FROM Movement WHERE negativeAmount = :negativeAmount GROUP BY SUBSTR(date, 0, 8)")
+    List<Movement>  getMonthAndValues(boolean negativeAmount);
 }
