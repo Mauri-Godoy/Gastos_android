@@ -1,6 +1,5 @@
 package com.mg.gastos.utils;
 
-import android.animation.AnimatorListenerAdapter;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -15,6 +14,11 @@ public class Animator {
     public static void alpha(View v) {
         Animation alpha = AnimationUtils.loadAnimation(v.getContext(), R.anim.alpha);
         v.startAnimation(alpha);
+    }
+
+    public static void scale(View v) {
+        Animation scale = AnimationUtils.loadAnimation(v.getContext(), R.anim.scale);
+        v.startAnimation(scale);
     }
 
     public static void show(View view) {

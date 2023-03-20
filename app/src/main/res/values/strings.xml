@@ -17,5 +17,5 @@
     <string name="error_details">Detalles del error</string>
     <string name="category">Categoría</string>
     <string name="generate_pdf">Generar PDF</string>
-    <string name="default_amount">0.00</string>
+    <string name="default_amount">0</string>
 </resources>
