@@ -60,8 +60,6 @@ public class MovementListAdapter extends RecyclerView.Adapter<MovementListAdapte
         tvAmount.setText(amount);
         if (!movement.isNegativeAmount())
             tvAmount.setTextColor(ContextCompat.getColor(tvAmount.getContext(), R.color.success));
-
-
     }
 
     @Override
