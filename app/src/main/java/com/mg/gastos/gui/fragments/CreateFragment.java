@@ -55,7 +55,6 @@ public class CreateFragment extends Fragment {
 
         setButtonAction();
         setSwitchAction();
-        setToolbarTitle();
 
         new Thread(new Runnable() {
             @Override
@@ -73,13 +72,8 @@ public class CreateFragment extends Fragment {
         AppCompatToggleButton switchCompat = root.findViewById(R.id.toggle_value);
         switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
             negativeValue = isChecked;
-            setToolbarTitle();
             setCategoriesInSelect();
         });
-    }
-
-    private void setToolbarTitle() {
-        MovementActivity.setToolbarTitle("Nuevo ".concat(negativeValue ? "gasto" : "ingreso"));
     }
 
     private void setChangeListener() {
