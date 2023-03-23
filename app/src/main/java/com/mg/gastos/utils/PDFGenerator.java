@@ -25,7 +25,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.mg.gastos.R;
-import com.mg.gastos.entity.Movement;
+import com.mg.gastos.data.entity.Movement;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -158,9 +158,10 @@ public class PDFGenerator {
         totalCell.setBackgroundColor(secondaryColor);
         PdfPCell emptyCell = new PdfPCell(new Phrase(""));
         emptyCell.setBackgroundColor(secondaryColor);
-        PdfPCell totalValueCell = new PdfPCell(new Phrase(String.valueOf(list.stream().mapToDouble(movement ->
-                movement.isNegativeAmount() ? (movement.getAmount() * -1) : movement.getAmount()
-        ).sum()),fontWhite));
+
+        String totalStr = String.valueOf(MovementUtils.getTotal(list));
+
+        PdfPCell totalValueCell = new PdfPCell(new Phrase(totalStr,fontWhite));
         totalValueCell.setBackgroundColor(secondaryColor);
 
         historyTable.addCell(totalCell);

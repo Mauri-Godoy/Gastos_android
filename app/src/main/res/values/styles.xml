@@ -33,24 +33,34 @@
         <item name="android:background">@drawable/rounded</item>
         <item name="android:textColor">@color/primary</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:paddingHorizontal">@dimen/margin_md</item>
+        <item name="android:paddingHorizontal">@dimen/margin_sm</item>
     </style>
 
     <style name="btn.white" parent="btn">
         <item name="android:background">@drawable/rounded</item>
         <item name="android:textColor">@color/primary</item>
+        <item name="android:drawableTint">@color/primary</item>
+    </style>
+
+    <style name="btn.outline" parent="btn">
+        <item name="android:background">@drawable/border_outline</item>
+        <item name="android:textColor">@color/secondary</item>
+        <item name="android:drawableTint">@color/secondary</item>
+        <item name="android:tint">@color/secondary</item>
     </style>
 
     <style name="btn.primary" parent="btn">
         <item name="android:background">@drawable/rounded_primary</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:drawableTint">@color/white</item>
+        <item name="tint">@color/white</item>
     </style>
 
     <style name="btn.secondary" parent="btn">
         <item name="android:background">@drawable/rounded_secondary</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:drawableTint">@color/white</item>
+        <item name="tint">@color/white</item>
     </style>
 
     <style name="btn.success" parent="btn">

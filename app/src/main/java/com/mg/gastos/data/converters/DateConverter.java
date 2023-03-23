@@ -1,4 +1,4 @@
-package com.mg.gastos.converters;
+package com.mg.gastos.data.converters;
 
 import androidx.room.TypeConverter;
 

@@ -1,9 +1,10 @@
-package com.mg.gastos.db;
+package com.mg.gastos.data.repository;
 
 import android.content.Context;
 import android.util.Log;
 
-import com.mg.gastos.entity.Category;
+import com.mg.gastos.data.db.DefaultData;
+import com.mg.gastos.data.entity.Category;
 
 import java.util.List;
 

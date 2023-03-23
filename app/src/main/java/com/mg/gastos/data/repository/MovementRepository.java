@@ -1,10 +1,8 @@
-package com.mg.gastos.db;
+package com.mg.gastos.data.repository;
 
 import android.content.Context;
 
-import com.mg.gastos.entity.Movement;
-
-import org.apache.commons.math3.util.Precision;
+import com.mg.gastos.data.entity.Movement;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -32,10 +30,8 @@ public class MovementRepository extends Repository {
         return database.movementDao().getAll();
     }
 
-    public Double getTotal() {
-        List<Movement> movementList = database.movementDao().getAll();
-
-        return movementList.stream().mapToDouble(movement -> movement.isNegativeAmount() ? (movement.getAmount() * -1) : movement.getAmount()).sum();
+    public List<Movement> getByDate(String dateFrom, String dateTo) {
+        return database.movementDao().getByDate(dateFrom, dateTo);
     }
 
     public List<Movement> getMonthAndValues(boolean negativeAmount) {

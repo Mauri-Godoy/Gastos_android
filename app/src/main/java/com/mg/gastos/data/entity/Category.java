@@ -1,7 +1,6 @@
-package com.mg.gastos.entity;
+package com.mg.gastos.data.entity;
 
 import androidx.annotation.NonNull;
-import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 

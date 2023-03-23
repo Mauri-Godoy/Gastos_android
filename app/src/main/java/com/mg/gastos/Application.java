@@ -1,6 +1,6 @@
 package com.mg.gastos;
 
-import com.mg.gastos.db.Database;
+import com.mg.gastos.data.db.Database;
 import com.mg.gastos.gui.CustomActivityOnCrash;
 
 import cat.ereza.customactivityoncrash.config.CaocConfig;

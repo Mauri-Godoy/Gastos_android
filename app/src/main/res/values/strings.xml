@@ -5,7 +5,7 @@
     <string name="sharedPrefName">sp_name</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="item_create">Cargar movimiento</string>
+    <string name="item_create">Cargar</string>
     <string name="item_history">Historial</string>
     <string name="item_stats">Estadísticas</string>
     <string name="description">Descripción</string>
@@ -20,4 +20,5 @@
     <string name="default_amount">0</string>
     <string name="income">Ingreso</string>
     <string name="outflow">Gasto</string>
+    <string name="movementListEmpty">No se obtuvo información.</string>
 </resources>

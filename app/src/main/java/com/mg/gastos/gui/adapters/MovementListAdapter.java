@@ -10,7 +10,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mg.gastos.R;
-import com.mg.gastos.entity.Movement;
+import com.mg.gastos.data.entity.Movement;
 import com.mg.gastos.utils.DateUtils;
 
 import org.apache.commons.lang3.StringUtils;
@@ -18,10 +18,12 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.List;
 
 import lombok.Getter;
+import lombok.Setter;
 
 public class MovementListAdapter extends RecyclerView.Adapter<MovementListAdapter.ViewHolder> {
 
-    private final List<Movement> movementList;
+    @Setter
+    private List<Movement> movementList;
 
     public MovementListAdapter(List<Movement> movementList) {
         this.movementList = movementList;

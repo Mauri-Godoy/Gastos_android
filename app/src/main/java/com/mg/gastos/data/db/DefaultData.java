@@ -1,7 +1,7 @@
-package com.mg.gastos.db;
+package com.mg.gastos.data.db;
 
-import com.mg.gastos.entity.Category;
-import com.mg.gastos.entity.MovementType;
+import com.mg.gastos.data.entity.Category;
+import com.mg.gastos.data.entity.MovementType;
 
 import java.util.Arrays;
 import java.util.List;

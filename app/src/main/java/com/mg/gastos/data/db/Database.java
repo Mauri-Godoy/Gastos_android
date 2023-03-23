@@ -1,6 +1,6 @@
-package com.mg.gastos.db;
+package com.mg.gastos.data.db;
 
-import static com.mg.gastos.db.Database.DATABASE_VERSION;
+import static com.mg.gastos.data.db.Database.DATABASE_VERSION;
 
 import android.content.Context;
 import android.util.Log;
@@ -9,14 +9,14 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
-import com.mg.gastos.converters.DateConverter;
-import com.mg.gastos.converters.TypeConverter;
-import com.mg.gastos.dao.CategoryDao;
-import com.mg.gastos.dao.MovementDao;
-import com.mg.gastos.dao.MovementTypeDao;
-import com.mg.gastos.entity.Category;
-import com.mg.gastos.entity.Movement;
-import com.mg.gastos.entity.MovementType;
+import com.mg.gastos.data.converters.DateConverter;
+import com.mg.gastos.data.converters.TypeConverter;
+import com.mg.gastos.data.dao.CategoryDao;
+import com.mg.gastos.data.dao.MovementDao;
+import com.mg.gastos.data.dao.MovementTypeDao;
+import com.mg.gastos.data.entity.Category;
+import com.mg.gastos.data.entity.Movement;
+import com.mg.gastos.data.entity.MovementType;
 
 @androidx.room.Database(entities = {Movement.class, Category.class, MovementType.class},
         version = DATABASE_VERSION, exportSchema = false)

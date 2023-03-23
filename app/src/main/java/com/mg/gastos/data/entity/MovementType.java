@@ -1,4 +1,4 @@
-package com.mg.gastos.entity;
+package com.mg.gastos.data.entity;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;

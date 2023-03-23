@@ -1,10 +1,10 @@
-package com.mg.gastos.dao;
+package com.mg.gastos.data.dao;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import com.mg.gastos.entity.Movement;
+import com.mg.gastos.data.entity.Movement;
 
 import java.util.List;
 
@@ -17,7 +17,11 @@ public interface MovementDao {
     @Query("SELECT * FROM Movement ORDER BY id desc")
     List<Movement> getAll();
 
+    @Query("SELECT * FROM Movement WHERE SUBSTR(date, 0, 11) BETWEEN :dateFrom AND :dateTo ORDER BY id desc")
+    List<Movement> getByDate(String dateFrom, String dateTo);
+
     @Query("SELECT 0 as 'id', '' as 'description', date, SUM(amount) as 'amount', '' as 'negativeAmount' " +
             "FROM Movement WHERE negativeAmount = :negativeAmount GROUP BY SUBSTR(date, 0, 8)")
     List<Movement>  getMonthAndValues(boolean negativeAmount);
+
 }

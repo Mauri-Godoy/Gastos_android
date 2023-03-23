@@ -1,9 +1,6 @@
-package com.mg.gastos.converters;
+package com.mg.gastos.data.converters;
 
-import com.mg.gastos.entity.MovementType;
-
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import com.mg.gastos.data.entity.MovementType;
 
 public class TypeConverter {
 

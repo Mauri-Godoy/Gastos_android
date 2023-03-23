@@ -1,9 +1,9 @@
-package com.mg.gastos.dao;
+package com.mg.gastos.data.dao;
 
 import androidx.room.Dao;
 import androidx.room.Insert;
 
-import com.mg.gastos.entity.MovementType;
+import com.mg.gastos.data.entity.MovementType;
 
 import java.util.List;
 

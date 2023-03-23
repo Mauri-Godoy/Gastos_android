@@ -1,4 +1,4 @@
-package com.mg.gastos.entity;
+package com.mg.gastos.data.entity;
 
 import androidx.room.Embedded;
 import androidx.room.Entity;

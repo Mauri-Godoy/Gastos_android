@@ -1,14 +1,8 @@
 package com.mg.gastos.gui.fragments;
 
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
-import androidx.appcompat.content.res.AppCompatResources;
 import androidx.appcompat.widget.AppCompatToggleButton;
-import androidx.appcompat.widget.SwitchCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -22,12 +16,11 @@ import android.widget.Toast;
 
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.mg.gastos.R;
-import com.mg.gastos.db.CategoryRepository;
-import com.mg.gastos.db.DefaultData;
-import com.mg.gastos.db.MovementRepository;
-import com.mg.gastos.entity.Category;
-import com.mg.gastos.entity.Movement;
-import com.mg.gastos.gui.MovementActivity;
+import com.mg.gastos.data.repository.CategoryRepository;
+import com.mg.gastos.data.db.DefaultData;
+import com.mg.gastos.data.repository.MovementRepository;
+import com.mg.gastos.data.entity.Category;
+import com.mg.gastos.data.entity.Movement;
 import com.mg.gastos.utils.Animator;
 import com.mg.gastos.utils.Validator;
 

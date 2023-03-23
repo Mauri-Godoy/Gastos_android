@@ -1,4 +1,4 @@
-package com.mg.gastos.db;
+package com.mg.gastos.data.repository;
 
 import android.content.Context;
 
