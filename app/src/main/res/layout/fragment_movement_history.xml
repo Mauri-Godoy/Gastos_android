@@ -61,7 +61,7 @@
 
         <Button
             android:id="@+id/btn_dateFrom"
-            style="@style/btn.secondary"
+            style="@style/btn.primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableEnd="@drawable/ic_calendar"
@@ -75,12 +75,12 @@
             android:layout_centerVertical="true"
             android:layout_toEndOf="@id/btn_dateFrom"
             android:src="@drawable/ic_navigate_next"
-            app:tint="@color/secondary"
+            app:tint="@color/primary"
             android:contentDescription="ic_next" />
 
         <Button
             android:id="@+id/btn_dateTo"
-            style="@style/btn.secondary"
+            style="@style/btn.primary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/iv_next"
