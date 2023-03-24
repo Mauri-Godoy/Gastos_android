@@ -50,6 +50,7 @@ public class CreateFragment extends Fragment {
         categoryRepository = CategoryRepository.getInstance(requireContext());
         movementRepository = MovementRepository.getInstance(requireContext());
 
+        setRadioGroupAction();
         setButtonAction();
 
         new Thread(new Runnable() {
@@ -64,9 +65,13 @@ public class CreateFragment extends Fragment {
         return root;
     }
 
-    private void setSwitchAction() {
+    private void setRadioGroupAction() {
         RadioGroup radioGroup = root.findViewById(R.id.rg_movement);
 
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            negativeValue = checkedId == R.id.r_outflow;
+            setCategoriesInSelect();
+        });
         setCategoriesInSelect();
     }
 

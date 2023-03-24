@@ -39,6 +39,6 @@ public class CustomActivityOnCrash extends AppCompatActivity {
     private void sendReport() {
         String errorInformation = cat.ereza.customactivityoncrash.CustomActivityOnCrash.getAllErrorDetailsFromIntent(CustomActivityOnCrash.this, getIntent());
 
-        EmailSender.sendEmail(this, "REPORTE ERROR ANDROID", errorInformation);
+        EmailSender.sendEmail(this, "REPORTE ERROR APP", errorInformation);
     }
 }

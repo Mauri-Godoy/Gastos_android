@@ -12,7 +12,8 @@ public class EmailSender {
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
 
-        context.startActivity(Intent.createChooser(intent, message));
+        context.startActivity(Intent.createChooser(intent, "Enviando Email"));
     }
 }

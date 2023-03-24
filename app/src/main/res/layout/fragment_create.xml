@@ -19,26 +19,30 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/radio_ninjas"
+            android:id="@+id/r_outflow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_xl"
+            android:layout_marginHorizontal="@dimen/margin_md"
             android:checked="true"
             android:drawableEnd="@drawable/ic_money_send"
             android:drawablePadding="@dimen/margin_sm"
             android:drawableTint="@color/danger"
+            android:scaleX="1.1"
+            android:scaleY="1.1"
             android:text="@string/outflow"
             android:textAllCaps="true"
             android:textStyle="bold" />
 
         <RadioButton
-            android:id="@+id/radio_pirates"
+            android:id="@+id/r_income"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_xl"
+            android:layout_marginHorizontal="@dimen/margin_md"
             android:drawableEnd="@drawable/ic_money_recive"
             android:drawablePadding="@dimen/margin_sm"
             android:drawableTint="@color/success"
+            android:scaleX="1.1"
+            android:scaleY="1.1"
             android:text="@string/income"
             android:textAllCaps="true"
             android:textStyle="bold" />
