@@ -34,13 +34,8 @@ public class MovementActivity extends AppCompatActivity {
         setNavBottomData();
     }
 
-    public static void setToolbarTitle(String title) {
-        Toolbar materialToolbar = getInstance().findViewById(R.id.toolbar);
-        materialToolbar.setTitle(title);
-    }
-
     private void setNavBottomData() {
-        replaceFragment(new CreateFragment(), null);
+        replaceFragment(new CreateFragment());
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
@@ -48,20 +43,18 @@ public class MovementActivity extends AppCompatActivity {
 
         bottomNavigationView.setOnItemSelectedListener(item -> {
 
-            String title = item.getTitle().toString();
-
             switch (item.getItemId()) {
                 case R.id.createMovementItem:
-                    replaceFragment(new CreateFragment(), title);
+                    replaceFragment(new CreateFragment());
                     break;
                 case R.id.movementStatsItem:
-                    replaceFragment(new MovementStatsFragment(), title);
+                    replaceFragment(new MovementStatsFragment());
                     break;
                 case R.id.movementHistoryItem:
-                    replaceFragment(new MovementHistoryFragment(), title);
+                    replaceFragment(new MovementHistoryFragment());
                     break;
                 default:
-                    replaceFragment(new UnderConstructionFragment(), title);
+                    replaceFragment(new UnderConstructionFragment());
                     break;
             }
 
@@ -69,13 +62,9 @@ public class MovementActivity extends AppCompatActivity {
         });
     }
 
-    private void replaceFragment(Fragment fragment, String itemTitle) {
+    private void replaceFragment(Fragment fragment) {
 
         Animator.transition(getSupportFragmentManager(), R.id.layout_fragments, fragment);
-
-        if (itemTitle != null)
-            setToolbarTitle(itemTitle);
-
     }
 
 }
