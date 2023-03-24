@@ -13,7 +13,7 @@ public class DateUtils {
     }
 
     public static String parseToTableFormat(LocalDateTime localDateTime) {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
         return dtf.format(localDateTime);
     }
