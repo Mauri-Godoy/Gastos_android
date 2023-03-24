@@ -37,18 +37,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:drawablePadding="@dimen/margin_sm"
             android:gravity="start"
-            android:text="TOTAL"
-            app:drawableStartCompat="@drawable/ic_account_balance"
-            app:drawableTint="@color/white" />
+            android:text="@string/total"/>
 
         <TextView
             android:id="@+id/tv_total"
             style="@style/subtitle.white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$ 0" />
+            android:text="$0" />
     </LinearLayout>
 
     <RelativeLayout

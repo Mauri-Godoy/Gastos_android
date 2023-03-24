@@ -27,4 +27,5 @@
     <string name="totalMoneyLabel">Total registrado</string>
     <string name="total_movements_label">movimientos registrados</string>
     <string name="last_movement_label">Ultimo movimiento</string>
+    <string name="total">TOTAL</string>
 </resources>
