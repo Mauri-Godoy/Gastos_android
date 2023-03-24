@@ -21,9 +21,17 @@ public class MovementRepository extends Repository {
         return instance;
     }
 
-    public void insert(final Movement movement) {
+    public void create(final Movement movement) {
         movement.setDate(LocalDateTime.now());
         database.movementDao().insert(movement);
+    }
+
+    public void update(final Movement movement) {
+        database.movementDao().update(movement);
+    }
+
+    public void delete(final Movement movement) {
+        database.movementDao().update(movement);
     }
 
     public List<Movement> getAll() {

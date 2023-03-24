@@ -10,7 +10,7 @@
     tools:context=".gui.fragments.CreateFragment">
 
     <ImageButton
-        android:id="@+id/btn_trash"
+        android:id="@+id/btn_delete"
         android:src="@drawable/ic_trash"
         android:layout_gravity="end"
         app:tint="@color/danger"
@@ -117,17 +117,6 @@
     </FrameLayout>
 
     <Button
-        android:id="@+id/btn_upload"
-        style="@style/btn.primary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_xl2"
-        android:drawableEnd="@drawable/ic_upload"
-        android:paddingHorizontal="@dimen/margin_sm"
-        android:text="@string/upload" />
-
-    <Button
-        android:visibility="gone"
         android:id="@+id/btn_save"
         style="@style/btn.primary"
         android:layout_width="match_parent"
@@ -135,6 +124,6 @@
         android:layout_marginTop="@dimen/margin_xl2"
         android:drawableEnd="@drawable/ic_save"
         android:paddingHorizontal="@dimen/margin_sm"
-        android:text="guardar" />
+        android:text="@string/save" />
 
 </LinearLayout>

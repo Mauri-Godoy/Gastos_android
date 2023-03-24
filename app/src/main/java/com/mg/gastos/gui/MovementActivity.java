@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.mg.gastos.R;
+import com.mg.gastos.data.entity.Movement;
 import com.mg.gastos.gui.fragments.CreateFragment;
 import com.mg.gastos.gui.fragments.MovementHistoryFragment;
 import com.mg.gastos.gui.fragments.MovementStatsFragment;
@@ -35,7 +36,7 @@ public class MovementActivity extends AppCompatActivity {
     }
 
     private void setNavBottomData() {
-        replaceFragment(new CreateFragment());
+        replaceFragment(new CreateFragment(new Movement()));
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
@@ -45,7 +46,7 @@ public class MovementActivity extends AppCompatActivity {
 
             switch (item.getItemId()) {
                 case R.id.createMovementItem:
-                    replaceFragment(new CreateFragment());
+                    replaceFragment(new CreateFragment(new Movement()));
                     break;
                 case R.id.movementStatsItem:
                     replaceFragment(new MovementStatsFragment());
@@ -62,7 +63,7 @@ public class MovementActivity extends AppCompatActivity {
         });
     }
 
-    private void replaceFragment(Fragment fragment) {
+    public void replaceFragment(Fragment fragment) {
 
         Animator.transition(getSupportFragmentManager(), R.id.layout_fragments, fragment);
     }

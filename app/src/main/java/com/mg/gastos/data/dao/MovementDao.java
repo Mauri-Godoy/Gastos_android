@@ -3,6 +3,7 @@ package com.mg.gastos.data.dao;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.mg.gastos.data.entity.Movement;
 
@@ -13,6 +14,9 @@ public interface MovementDao {
 
     @Insert
     void insert(Movement movement);
+
+    @Update
+    void update(Movement movement);
 
     @Query("SELECT * FROM Movement ORDER BY date desc")
     List<Movement> getAll();

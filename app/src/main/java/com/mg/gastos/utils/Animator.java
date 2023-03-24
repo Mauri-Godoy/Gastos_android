@@ -44,7 +44,7 @@ public class Animator {
                             R.animator.enter_from_right,   // popEnter
                             R.animator.exit_to_left  // popExit
                     )
-                    .replace(fragmentId, fragment)
+                    .replace(fragmentId, fragment).addToBackStack(null)
                     .commit();
         }
     }

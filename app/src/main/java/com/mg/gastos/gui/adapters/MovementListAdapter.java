@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 import com.mg.gastos.R;
 import com.mg.gastos.data.entity.Movement;
+import com.mg.gastos.gui.MovementActivity;
+import com.mg.gastos.gui.fragments.CreateFragment;
 import com.mg.gastos.utils.Animator;
 import com.mg.gastos.utils.DateUtils;
 
@@ -69,6 +71,7 @@ public class MovementListAdapter extends RecyclerView.Adapter<MovementListAdapte
 
         holder.getMaterialCardView().setOnClickListener(v -> {
             Animator.alpha(v);
+            MovementActivity.getInstance().replaceFragment(new CreateFragment(movement));
         });
     }
 

@@ -28,4 +28,5 @@
     <string name="total_movements_label">movimientos registrados</string>
     <string name="last_movement_label">Ultimo movimiento</string>
     <string name="total">TOTAL</string>
+    <string name="save">guardar</string>
 </resources>
