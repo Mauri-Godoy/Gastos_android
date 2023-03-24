@@ -16,77 +16,68 @@
             android:layout_marginVertical="@dimen/margin_sm"
             android:orientation="vertical">
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_totalMoneyLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/totalMoneyLabel"
+                android:textAllCaps="true"
+                android:textColor="@color/secondary"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_totalMoneyLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/margin_sm"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    android:textColor="@color/secondary"
-                    android:layout_alignParentTop="true"
-                    android:text="@string/totalMoneyLabel" />
+            <TextView
+                android:id="@+id/tv_totalMoney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_sm"
+                android:layout_marginBottom="@dimen/margin_md"
+                android:textAllCaps="true"
+                android:textSize="@dimen/text_md"
+                android:textStyle="bold"
+                tools:text="$65" />
 
-                <TextView
-                    android:id="@+id/tv_totalMoney"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    android:layout_marginVertical="@dimen/margin_sm"
-                    android:layout_toEndOf="@id/tv_totalMoneyLabel"
-                    tools:text="$65" />
+            <TextView
+                android:id="@+id/tv_totalMovementsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_movements_label"
+                android:textAllCaps="true"
+                android:textColor="@color/secondary"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_totalMovementsLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/margin_sm"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    android:textColor="@color/secondary"
-                    android:layout_below="@id/tv_lastMovementLabel"
-                    android:text="movimientos registrados: " />
+            <TextView
+                android:id="@+id/tv_totalMovements"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_sm"
+                android:layout_marginBottom="@dimen/margin_md"
+                android:textAllCaps="true"
+                android:textSize="@dimen/text_md"
+                android:textStyle="bold"
+                tools:text="64" />
 
-                <TextView
-                    android:id="@+id/tv_totalMovements"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/margin_sm"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    android:layout_below="@id/tv_lastMovement"
-                    android:layout_toEndOf="@id/tv_totalMovementsLabel"
-                    tools:text="64" />
+            <TextView
+                android:id="@+id/tv_lastMovementLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/last_movement_label"
+                android:textAllCaps="true"
+                android:textColor="@color/secondary"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/tv_lastMovementLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/margin_sm"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    android:textColor="@color/secondary"
-                    android:layout_below="@id/tv_totalMoneyLabel"
-                    android:text="Ultimo movimiento: " />
-
-
-                <TextView
-                    android:id="@+id/tv_lastMovement"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"
-                    android:layout_marginVertical="@dimen/margin_sm"
-                    android:layout_below="@id/tv_totalMoneyLabel"
-                    android:layout_toEndOf="@id/tv_lastMovementLabel"
-                    tools:text="12/06/23" />
-            </RelativeLayout>
-
+            <TextView
+                android:id="@+id/tv_lastMovement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_sm"
+                android:layout_marginBottom="@dimen/margin_md"
+                android:textAllCaps="true"
+                android:textSize="@dimen/text_md"
+                android:textStyle="bold"
+                tools:text="12/06/23" />
 
             <FrameLayout
                 android:id="@+id/layout_frameChart"

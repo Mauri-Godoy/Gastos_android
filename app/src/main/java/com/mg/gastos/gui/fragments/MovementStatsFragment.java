@@ -56,7 +56,7 @@ public class MovementStatsFragment extends Fragment {
         if (!movementList.isEmpty()) {
             String lastMovementStr = DateUtils.parseToTableFormat(movementList.get(0).getDate());
             lastMovement.setText(lastMovementStr);
-        }
+        } else lastMovement.setText("-");
 
         totalMovements.setText(String.valueOf(movementList.size()));
 
