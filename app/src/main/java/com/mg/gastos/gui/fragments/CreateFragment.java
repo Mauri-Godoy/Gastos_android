@@ -1,8 +1,10 @@
 package com.mg.gastos.gui.fragments;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatToggleButton;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
@@ -65,6 +67,17 @@ public class CreateFragment extends Fragment {
         AppCompatToggleButton switchCompat = root.findViewById(R.id.toggle_value);
         switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
             negativeValue = isChecked;
+
+            Drawable compoundDrawable = switchCompat.getCompoundDrawables()[0];
+
+            int color = ContextCompat.getColor(requireContext(), R.color.success);
+
+            if (isChecked)
+                color = ContextCompat.getColor(requireContext(), R.color.danger);
+
+            if (compoundDrawable != null)
+                compoundDrawable.setTint(color);
+
             setCategoriesInSelect();
         });
     }

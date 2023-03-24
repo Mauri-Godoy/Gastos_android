@@ -27,6 +27,6 @@ public class PermissionHelper {
     }
 
     private static final String[] PERMISSIONS = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.MANAGE_EXTERNAL_STORAGE};
+            Manifest.permission.READ_EXTERNAL_STORAGE};
 
 }

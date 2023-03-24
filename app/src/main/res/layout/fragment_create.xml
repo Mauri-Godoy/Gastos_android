@@ -10,20 +10,22 @@
     android:paddingTop="@dimen/margin_md"
     tools:context=".gui.fragments.CreateFragment">
 
-    <androidx.appcompat.widget.AppCompatToggleButton
-        android:id="@+id/toggle_value"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_xl"
-        android:background="@drawable/stroke_bottom_secondary"
-        android:checked="true"
-        android:paddingHorizontal="@dimen/margin_sm"
-        android:textColor="@color/secondary"
-        android:drawableEnd="@drawable/ic_currency_exchange"
-        android:drawableTint="@color/secondary"
-        android:textOff="@string/income"
-        android:textOn="@string/outflow"
-        android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatToggleButton
+            android:id="@+id/toggle_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/margin_xl"
+            android:checked="true"
+            android:drawablePadding="@dimen/margin_sm"
+            android:drawableStart="@drawable/ic_exchange_bill"
+            android:paddingHorizontal="@dimen/margin_md"
+            style="@style/btn.outline"
+            android:drawableTint="@color/danger"
+            android:textOff="@string/income"
+            android:textOn="@string/outflow"
+            android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextInputLayout"
