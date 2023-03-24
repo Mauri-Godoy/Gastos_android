@@ -47,14 +47,14 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/customactivityoncrash_error_activity_more_info_button"
+                    android:id="@+id/btn_sendReport"
                     style="@style/btn.primary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/margin_sm"
                     android:layout_weight="1"
                     android:paddingHorizontal="10dp"
-                    android:text="@string/error_details" />
+                    android:text="@string/sendReport" />
 
                 <Button
                     android:id="@+id/customactivityoncrash_error_activity_restart_button"

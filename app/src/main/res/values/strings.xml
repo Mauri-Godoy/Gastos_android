@@ -21,4 +21,6 @@
     <string name="income">Ingreso</string>
     <string name="outflow">Gasto</string>
     <string name="movementListEmpty">No se obtuvo información.</string>
+    <string name="email">mauu.godoy01@gmail.com</string>
+    <string name="sendReport">ENVIAR REPORTE</string>
 </resources>
