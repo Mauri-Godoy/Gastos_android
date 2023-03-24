@@ -1,31 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".gui.fragments.MovementStatsFragment">
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/chart"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btn_generatePdf"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/margin_xl4"
-        android:layout_marginTop="@dimen/margin_md"
-        android:layout_marginHorizontal="@dimen/margin_xl"/>
+        android:layout_height="match_parent">
 
-    <Button
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:id="@+id/btn_generatePdf"
-        android:layout_width="match_parent"
-        style="@style/btn.primary"
-        android:layout_marginHorizontal="@dimen/margin_md"
-        android:layout_marginVertical="@dimen/margin_sm"
-        android:text="@string/generate_pdf"
-        android:paddingHorizontal="@dimen/margin_sm"
-        android:drawableEnd="@drawable/ic_picture_pdf"
-        android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/margin_md"
+            android:layout_marginVertical="@dimen/margin_md"
+            android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tv_totalMoney"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_sm"
+                tools:text="Total registrado: $65" />
+
+            <TextView
+                android:id="@+id/tv_totalMovements"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_sm"
+                tools:text="64 movimientos registrados" />
+
+            <TextView
+                android:id="@+id/tv_lastMovement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_sm"
+                tools:text="Ultimo movimiento el 12/06/23" />
+
+            <Button
+                android:id="@+id/btn_generatePdf"
+                style="@style/btn.primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_sm"
+                android:drawableEnd="@drawable/ic_picture_pdf"
+                android:paddingHorizontal="@dimen/margin_sm"
+                android:text="@string/generate_pdf" />
+
+            <FrameLayout
+                android:id="@+id/layout_frameChart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</FrameLayout>

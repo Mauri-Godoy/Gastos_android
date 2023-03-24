@@ -71,7 +71,7 @@ public class MovementActivity extends AppCompatActivity {
 
     private void replaceFragment(Fragment fragment, String itemTitle) {
 
-        Animator.transition(getSupportFragmentManager(), R.id.frame_layout, fragment);
+        Animator.transition(getSupportFragmentManager(), R.id.layout_fragments, fragment);
 
         if (itemTitle != null)
             setToolbarTitle(itemTitle);

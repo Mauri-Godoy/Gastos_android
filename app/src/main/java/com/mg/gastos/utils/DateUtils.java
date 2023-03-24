@@ -22,17 +22,17 @@ public class DateUtils {
 
     public static String parseToSimpleDate(LocalDateTime localDateTime) {
 
-        String pattern = "dd 'de' MMMM HH:mm";
+        String pattern = "dd 'de' MMMM";
 
         LocalDateTime startDay = LocalDateTime.now().toLocalDate().atStartOfDay();
 
         if (localDateTime.isAfter(startDay))
             pattern = "HH:mm";
         else if (Duration.between(localDateTime, startDay).toDays() < 6)
-            pattern = "EEEE HH:mm";
+            pattern = "EEEE";
 
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern(pattern);
 
-        return dtf.format(localDateTime);
+        return dtf.format(localDateTime).toUpperCase();
     }
 }

@@ -12,15 +12,15 @@
         android:layout_height="wrap_content"
         android:background="@color/primary"
         android:fitsSystemWindows="true"
+        android:textAllCaps="true"
         app:layout_constraintTop_toTopOf="parent"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:title="@string/item_create"
-        android:textAllCaps="true"
         app:titleTextColor="@color/white" />
 
     <FrameLayout
-        android:id="@+id/frame_layout"
+        android:id="@+id/layout_fragments"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"

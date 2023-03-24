@@ -23,4 +23,5 @@
     <string name="movementListEmpty">No se obtuvo información.</string>
     <string name="email">mauu.godoy01@gmail.com</string>
     <string name="sendReport">ENVIAR REPORTE</string>
+    <string name="expenses_por_month">Gastos por mes</string>
 </resources>
