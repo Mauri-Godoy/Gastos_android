@@ -14,14 +14,15 @@ public interface MovementDao {
     @Insert
     void insert(Movement movement);
 
-    @Query("SELECT * FROM Movement ORDER BY id desc")
+    @Query("SELECT * FROM Movement ORDER BY date desc")
     List<Movement> getAll();
 
-    @Query("SELECT * FROM Movement WHERE SUBSTR(date, 0, 11) BETWEEN :dateFrom AND :dateTo ORDER BY id desc")
+    @Query("SELECT * FROM Movement WHERE SUBSTR(date, 0, 11) BETWEEN :dateFrom AND :dateTo ORDER BY date desc")
     List<Movement> getByDate(String dateFrom, String dateTo);
 
     @Query("SELECT 0 as 'id', '' as 'description', date, SUM(amount) as 'amount', '' as 'negativeAmount' " +
-            "FROM Movement WHERE negativeAmount = :negativeAmount GROUP BY SUBSTR(date, 0, 8)")
+            "FROM Movement WHERE negativeAmount = :negativeAmount GROUP BY SUBSTR(date, 0, 8) " +
+            "ORDER BY date")
     List<Movement>  getMonthAndValues(boolean negativeAmount);
 
 }

@@ -37,4 +37,7 @@ public class MovementRepository extends Repository {
     public List<Movement> getMonthAndValues(boolean negativeAmount) {
         return database.movementDao().getMonthAndValues(negativeAmount);
     }
+
+    /**INSERT INTO movement(date, amount, code, negativeAmount, movementType, name)
+     * values ('2023/05/21 12:27:56',24.0, 'OTHER' , 1, 'OTHER', 'Casa') **/
 }

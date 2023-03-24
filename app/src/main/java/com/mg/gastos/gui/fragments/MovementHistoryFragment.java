@@ -83,7 +83,7 @@ public class MovementHistoryFragment extends Fragment {
         Calendar calendar = Calendar.getInstance();
         setDatePickerInButton(btnDateTo, calendar, false);
 
-        calendar.add(Calendar.MONTH, -1);
+        calendar.add(Calendar.DAY_OF_MONTH, -7);
         setDatePickerInButton(btnDateFrom, calendar, true);
     }
 

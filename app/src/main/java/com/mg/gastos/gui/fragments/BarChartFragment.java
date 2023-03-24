@@ -55,7 +55,6 @@ public class BarChartFragment extends Fragment {
         chart.setPinchZoom(false);
         chart.setDrawGridBackground(false);
         chart.getAxisRight().setEnabled(false);
-        chart.getAxisLeft().setAxisMinimum(100f);
         chart.getXAxis().setEnabled(false);
         chart.getLegend().setVerticalAlignment(Legend.LegendVerticalAlignment.TOP);
     }
