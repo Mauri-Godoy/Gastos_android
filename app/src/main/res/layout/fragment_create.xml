@@ -9,6 +9,18 @@
     android:paddingTop="@dimen/margin_xl2"
     tools:context=".gui.fragments.CreateFragment">
 
+    <ImageButton
+        android:id="@+id/btn_trash"
+        android:src="@drawable/ic_trash"
+        android:layout_gravity="end"
+        app:tint="@color/danger"
+        android:visibility="gone"
+        android:background="@color/none"
+        android:layout_marginBottom="@dimen/margin_md"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="ic_trash" />
+
     <RadioGroup
         android:id="@+id/rg_movement"
         android:layout_width="match_parent"
@@ -39,7 +51,7 @@
             android:layout_marginHorizontal="@dimen/margin_md"
             android:drawableEnd="@drawable/ic_money_recive"
             android:drawablePadding="@dimen/margin_sm"
-            android:drawableTint="@color/success"
+            android:drawableTint="@color/primary"
             android:scaleX="1.1"
             android:scaleY="1.1"
             android:text="@string/income"
@@ -113,5 +125,16 @@
         android:drawableEnd="@drawable/ic_upload"
         android:paddingHorizontal="@dimen/margin_sm"
         android:text="@string/upload" />
+
+    <Button
+        android:visibility="gone"
+        android:id="@+id/btn_save"
+        style="@style/btn.primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_xl2"
+        android:drawableEnd="@drawable/ic_save"
+        android:paddingHorizontal="@dimen/margin_sm"
+        android:text="guardar" />
 
 </LinearLayout>

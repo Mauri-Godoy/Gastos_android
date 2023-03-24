@@ -3,14 +3,17 @@ package com.mg.gastos.gui.adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.mg.gastos.R;
 import com.mg.gastos.data.entity.Movement;
+import com.mg.gastos.utils.Animator;
 import com.mg.gastos.utils.DateUtils;
 
 import org.apache.commons.lang3.StringUtils;
@@ -60,8 +63,13 @@ public class MovementListAdapter extends RecyclerView.Adapter<MovementListAdapte
         String amount = (movement.isNegativeAmount() ? "- " : "") + "$" + movement.getAmount();
         TextView tvAmount = holder.getAmount();
         tvAmount.setText(amount);
+
         if (!movement.isNegativeAmount())
-            tvAmount.setTextColor(ContextCompat.getColor(tvAmount.getContext(), R.color.success));
+            tvAmount.setTextColor(ContextCompat.getColor(tvAmount.getContext(), R.color.primary));
+
+        holder.getMaterialCardView().setOnClickListener(v -> {
+            Animator.alpha(v);
+        });
     }
 
     @Override
@@ -73,11 +81,15 @@ public class MovementListAdapter extends RecyclerView.Adapter<MovementListAdapte
         @Getter
         private final TextView category, date, amount;
 
+        @Getter
+        private final MaterialCardView materialCardView;
+
         public ViewHolder(View view) {
             super(view);
             category = (TextView) view.findViewById(R.id.tv_category);
             date = (TextView) view.findViewById(R.id.tv_date);
             amount = (TextView) view.findViewById(R.id.tv_amount);
+            materialCardView = view.findViewById(R.id.materialCard);
         }
     }
 }

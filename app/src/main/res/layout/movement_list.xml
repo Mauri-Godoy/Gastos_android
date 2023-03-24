@@ -7,6 +7,7 @@
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
+        android:id="@+id/materialCard"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_sm"
         android:theme="@style/Theme.MaterialComponents.Light"
@@ -23,39 +24,35 @@
                 android:id="@+id/tv_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center|start"
                 tools:text="Salud e higiene: shampoo para el pelo" />
 
             <RelativeLayout
-                android:paddingTop="@dimen/margin_xsm"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/margin_xsm">
 
                 <TextView
                     android:id="@+id/tv_date"
                     android:layout_width="wrap_content"
-                    app:drawableStartCompat="@drawable/ic_time"
-                    android:drawablePadding="@dimen/margin_xxsm"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
                     android:gravity="center_vertical"
                     android:textColor="@color/secondary"
                     android:textSize="@dimen/text_md"
                     android:textStyle="bold"
-                    tools:text="06:14"
-                    app:drawableTint="@color/secondary"
-                    android:layout_alignParentStart="true"/>
+                    tools:text="06:14" />
 
                 <TextView
                     android:id="@+id/tv_amount"
-                    android:textColor="@color/danger"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="@dimen/text_md"
-                    android:textStyle="bold"
                     android:layout_alignParentTop="true"
                     android:layout_alignParentEnd="true"
+                    android:textColor="@color/danger"
+                    android:textSize="@dimen/text_md"
+                    android:textStyle="bold"
                     tools:text="100000.0$" />
             </RelativeLayout>
 
