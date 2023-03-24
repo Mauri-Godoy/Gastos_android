@@ -16,7 +16,7 @@
     <string name="restart_app">Reiniciar aplicación</string>
     <string name="error_details">Detalles del error</string>
     <string name="category">Categoría</string>
-    <string name="generate_pdf">Generar PDF</string>
+    <string name="generate_pdf">Generar historial</string>
     <string name="default_amount">0</string>
     <string name="income">Ingreso</string>
     <string name="outflow">Gasto</string>
@@ -24,4 +24,5 @@
     <string name="email">mauu.godoy01@gmail.com</string>
     <string name="sendReport">ENVIAR REPORTE</string>
     <string name="expenses_por_month">Gastos mes a mes</string>
+    <string name="totalMoneyLabel">Total registrado: </string>
 </resources>

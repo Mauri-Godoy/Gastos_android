@@ -14,6 +14,6 @@ public class EmailSender {
         intent.putExtra(Intent.EXTRA_SUBJECT, subject);
         intent.putExtra(Intent.EXTRA_TEXT, message);
 
-        context.startActivity(Intent.createChooser(intent, "Enviar Email"));
+        context.startActivity(Intent.createChooser(intent, "Enviar email"));
     }
 }

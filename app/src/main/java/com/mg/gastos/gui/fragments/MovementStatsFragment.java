@@ -53,16 +53,17 @@ public class MovementStatsFragment extends Fragment {
         totalMovements = root.findViewById(R.id.tv_totalMovements);
         total = root.findViewById(R.id.tv_totalMoney);
 
-        if(!movementList.isEmpty()) {
-            String lastMovementStr = "Ultimo movimiento: "
-                    .concat(DateUtils.parseToTableFormat(movementList.get(0).getDate()));
+        if (!movementList.isEmpty()) {
+            String lastMovementStr = DateUtils.parseToTableFormat(movementList.get(0).getDate());
             lastMovement.setText(lastMovementStr);
         }
 
-        String totalMovementsStr = movementList.size() + " movimientos registrados";
-        totalMovements.setText(totalMovementsStr);
+        totalMovements.setText(String.valueOf(movementList.size()));
 
-        String totalStr = "Total: $" + MovementUtils.getTotal(movementList);
+        double value = MovementUtils.getTotal(movementList);
+
+        String totalStr = value < 0 ? " -".concat("$" + Math.abs(value)) : "$" + Math.abs(value);
+
         total.setText(totalStr);
     }
 

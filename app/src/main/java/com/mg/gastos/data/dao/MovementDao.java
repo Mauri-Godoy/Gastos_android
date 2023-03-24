@@ -22,7 +22,7 @@ public interface MovementDao {
 
     @Query("SELECT 0 as 'id', '' as 'description', date, SUM(amount) as 'amount', '' as 'negativeAmount' " +
             "FROM Movement WHERE negativeAmount = :negativeAmount GROUP BY SUBSTR(date, 0, 8) " +
-            "ORDER BY date")
+            "ORDER BY date DESC LIMIT(8)")
     List<Movement>  getMonthAndValues(boolean negativeAmount);
 
 }

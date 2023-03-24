@@ -39,5 +39,5 @@ public class MovementRepository extends Repository {
     }
 
     /**INSERT INTO movement(date, amount, code, negativeAmount, movementType, name)
-     * values ('2023/05/21 12:27:56',24.0, 'OTHER' , 1, 'OTHER', 'Casa') **/
+     * values ('2022/12/21 12:27:56',24.0, 'OTHER' , 1, 'OTHER', 'Casa') **/
 }

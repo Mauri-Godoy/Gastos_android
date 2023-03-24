@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/margin_sm"
     android:orientation="vertical"
     tools:context=".gui.fragments.BarChartFragment">
 
@@ -11,7 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginVertical="@dimen/margin_md"
         android:text="@string/expenses_por_month"
-        android:textSize="@dimen/text_md"/>
+        android:textAllCaps="true"
+        android:textColor="@color/secondary"
+        android:textStyle="bold" />
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barChart"

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 
 import com.mg.gastos.R;
+import com.mg.gastos.utils.Animator;
 import com.mg.gastos.utils.EmailSender;
 
 import cat.ereza.customactivityoncrash.config.CaocConfig;
@@ -27,13 +28,21 @@ public class CustomActivityOnCrash extends AppCompatActivity {
             return;
         }
 
-        restartButton.setOnClickListener(v -> cat.ereza.customactivityoncrash.CustomActivityOnCrash.restartApplication(CustomActivityOnCrash.this, config));
+        restartButton.setOnClickListener(v -> {
+                    Animator.alpha(v);
+                    cat.ereza.customactivityoncrash.CustomActivityOnCrash
+                            .restartApplication(CustomActivityOnCrash.this, config);
+                }
+        );
 
 
         Button btnSendReport = findViewById(R.id.btn_sendReport);
 
 
-        btnSendReport.setOnClickListener(v -> sendReport());
+        btnSendReport.setOnClickListener(v -> {
+            Animator.alpha(v);
+            sendReport();
+        });
     }
 
     private void sendReport() {
