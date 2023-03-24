@@ -10,22 +10,39 @@
     android:paddingTop="@dimen/margin_md"
     tools:context=".gui.fragments.CreateFragment">
 
+    <RadioGroup
+        android:id="@+id/rg_movement"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_xl"
+        android:gravity="center"
+        android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatToggleButton
-            android:id="@+id/toggle_value"
+        <RadioButton
+            android:id="@+id/radio_ninjas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/margin_xl"
+            android:layout_marginHorizontal="@dimen/margin_xl"
             android:checked="true"
+            android:drawableEnd="@drawable/ic_money_send"
             android:drawablePadding="@dimen/margin_sm"
-            android:drawableStart="@drawable/ic_exchange_bill"
-            android:paddingHorizontal="@dimen/margin_md"
-            style="@style/btn.outline"
             android:drawableTint="@color/danger"
-            android:textOff="@string/income"
-            android:textOn="@string/outflow"
+            android:text="@string/outflow"
+            android:textAllCaps="true"
             android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/radio_pirates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/margin_xl"
+            android:drawableEnd="@drawable/ic_money_recive"
+            android:drawablePadding="@dimen/margin_sm"
+            android:drawableTint="@color/success"
+            android:text="@string/income"
+            android:textAllCaps="true"
+            android:textStyle="bold" />
+    </RadioGroup>
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/TextInputLayout"

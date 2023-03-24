@@ -14,8 +14,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.jaredrummler.materialspinner.MaterialSpinner;
 import com.mg.gastos.R;
 import com.mg.gastos.data.repository.CategoryRepository;
@@ -49,7 +51,6 @@ public class CreateFragment extends Fragment {
         movementRepository = MovementRepository.getInstance(requireContext());
 
         setButtonAction();
-        setSwitchAction();
 
         new Thread(new Runnable() {
             @Override
@@ -64,22 +65,9 @@ public class CreateFragment extends Fragment {
     }
 
     private void setSwitchAction() {
-        AppCompatToggleButton switchCompat = root.findViewById(R.id.toggle_value);
-        switchCompat.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            negativeValue = isChecked;
+        RadioGroup radioGroup = root.findViewById(R.id.rg_movement);
 
-            Drawable compoundDrawable = switchCompat.getCompoundDrawables()[0];
-
-            int color = ContextCompat.getColor(requireContext(), R.color.success);
-
-            if (isChecked)
-                color = ContextCompat.getColor(requireContext(), R.color.danger);
-
-            if (compoundDrawable != null)
-                compoundDrawable.setTint(color);
-
-            setCategoriesInSelect();
-        });
+        setCategoriesInSelect();
     }
 
     private void setChangeListener() {
