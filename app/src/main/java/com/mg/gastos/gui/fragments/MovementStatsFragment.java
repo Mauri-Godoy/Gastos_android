@@ -68,7 +68,7 @@ public class MovementStatsFragment extends Fragment {
     }
 
     private void setFragment() {
-        requireActivity().getSupportFragmentManager().beginTransaction().add(R.id.layout_frameChart, new BarChartFragment()).commit();
+        this.getChildFragmentManager().beginTransaction().add(R.id.layout_frameChart, new BarChartFragment()).commit();
     }
 
     private void setButtonAction() {
