@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
@@ -32,11 +33,12 @@ public class BarChartFragment extends Fragment {
             R.color.chart5, R.color.chart6, R.color.chart7, R.color.chart8, R.color.secondary, R.color.primary};
 
     private BarChart chart;
+    private View root;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_bar_chart, container, false);
+        root = inflater.inflate(R.layout.fragment_bar_chart, container, false);
         chart = root.findViewById(R.id.barChart);
 
         createBarChart();
@@ -102,7 +104,14 @@ public class BarChartFragment extends Fragment {
 
         BarData data = new BarData(arrayDataSet);
         data.setValueTextSize(10f);
-        data.setBarWidth(0.9f);
+
+        if (arrayDataSet.size() <= 0) {
+            LinearLayout linearLayout = root.findViewById(R.id.layout_barChart);
+            linearLayout.setVisibility(View.GONE);
+        } else if (arrayDataSet.size() <= 3)
+            data.setBarWidth(0.3f);
+        else data.setBarWidth(0.9f);
+
         chart.setData(data);
 
     }
