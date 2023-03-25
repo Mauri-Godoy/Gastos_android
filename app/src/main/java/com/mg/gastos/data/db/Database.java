@@ -22,7 +22,7 @@ import com.mg.gastos.data.entity.MovementType;
         version = DATABASE_VERSION, exportSchema = false)
 @TypeConverters({DateConverter.class, TypeConverter.class})
 public abstract class Database extends RoomDatabase {
-    public static final int DATABASE_VERSION = 4;
+    public static final int DATABASE_VERSION = 6;
     public static final String DATABASE_NAME = "gastos.db";
 
     public abstract MovementDao movementDao();

@@ -24,11 +24,13 @@ import com.mg.gastos.data.repository.MovementRepository;
 import com.mg.gastos.data.entity.Category;
 import com.mg.gastos.data.entity.Movement;
 import com.mg.gastos.utils.Animator;
+import com.mg.gastos.utils.DialogBuilder;
 import com.mg.gastos.utils.Validator;
 
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -43,7 +45,6 @@ public class CreateFragment extends Fragment {
     private RadioGroup radioGroup;
     private MaterialSpinner materialSpinner;
     private RadioButton rOutflow, rIncome;
-    private ImageButton buttonDelete;
 
     public CreateFragment(Movement movement) {
         this.movement = movement;
@@ -61,7 +62,6 @@ public class CreateFragment extends Fragment {
         materialSpinner = root.findViewById(R.id.spinner);
         rOutflow = root.findViewById(R.id.r_outflow);
         rIncome = root.findViewById(R.id.r_income);
-        buttonDelete = root.findViewById(R.id.btn_delete);
 
         setRadioGroupAction();
         setCategoriesInSelect();
@@ -124,8 +124,7 @@ public class CreateFragment extends Fragment {
         if (movement.getId() == null) {
             movementRepository.create(movement);
             cleanData();
-        }
-        else {
+        } else {
             movementRepository.update(movement);
             requireActivity().onBackPressed();
         }
@@ -157,8 +156,6 @@ public class CreateFragment extends Fragment {
     }
 
     private void setMovementDataInView() {
-        Animator.show(buttonDelete);
-
         if (movement.isNegativeAmount())
             rOutflow.setChecked(true);
         else
@@ -171,6 +168,30 @@ public class CreateFragment extends Fragment {
         String amountStr = String.valueOf(amountValue.intValue());
         amount.setText(amountStr);
         description.setText(movement.getDescription());
+
+        setButtonDeleteAction();
+    }
+
+    private void setButtonDeleteAction() {
+        ImageButton buttonDelete = root.findViewById(R.id.btn_delete);
+        Animator.show(buttonDelete);
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Animator.alpha(v);
+
+                DialogBuilder.dialogConfirm(requireActivity(), new Consumer<Boolean>() {
+                    @Override
+                    public void accept(Boolean aBoolean) {
+                        if (aBoolean) {
+                            MovementRepository.getInstance(requireContext()).delete(movement);
+                            requireActivity().onBackPressed();
+                            Toast.makeText(requireContext(), "Eliminado con exito!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
     }
 
     private void setCategory() {

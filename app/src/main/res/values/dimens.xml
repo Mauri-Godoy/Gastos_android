@@ -17,4 +17,6 @@
     <dimen name="image_welcome">130dp</dimen>
 
     <dimen name="amountWidth">160dp</dimen>
+
+    <dimen name="btn_delete">28dp</dimen>
 </resources>

@@ -1,129 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingHorizontal="@dimen/margin_sm"
-    android:paddingTop="@dimen/margin_xl2"
     tools:context=".gui.fragments.CreateFragment">
 
-    <ImageButton
-        android:id="@+id/btn_delete"
-        android:src="@drawable/ic_trash"
-        android:layout_gravity="end"
-        app:tint="@color/danger"
-        android:visibility="gone"
-        android:background="@color/none"
-        android:layout_marginBottom="@dimen/margin_md"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="ic_trash" />
-
-    <RadioGroup
-        android:id="@+id/rg_movement"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_xl"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <RadioButton
-            android:id="@+id/r_outflow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_md"
-            android:checked="true"
-            android:drawableEnd="@drawable/ic_money_send"
-            android:drawablePadding="@dimen/margin_sm"
-            android:drawableTint="@color/danger"
-            android:scaleX="1.1"
-            android:scaleY="1.1"
-            android:text="@string/outflow"
-            android:textAllCaps="true"
-            android:textStyle="bold" />
-
-        <RadioButton
-            android:id="@+id/r_income"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/margin_md"
-            android:drawableEnd="@drawable/ic_money_recive"
-            android:drawablePadding="@dimen/margin_sm"
-            android:drawableTint="@color/primary"
-            android:scaleX="1.1"
-            android:scaleY="1.1"
-            android:text="@string/income"
-            android:textAllCaps="true"
-            android:textStyle="bold" />
-    </RadioGroup>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/TextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/none">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_amount"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:background="@color/none"
-            android:cursorVisible="false"
-            android:drawableStart="@drawable/ic_money"
-            android:inputType="number"
-            android:maxLength="9"
-            android:text="@string/default_amount"
-            android:textSize="60sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        style="@style/TextInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/text_xl2"
-        android:hint="@string/description"
-        android:paddingTop="@dimen/margin_xsm"
-        app:counterMaxLength="@integer/descriptionMaxLength"
-        app:startIconDrawable="@drawable/ic_short_text">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_description"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            android:maxLength="@integer/descriptionMaxLength" />
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/margin_sm"
+            android:paddingTop="@dimen/margin_xl2">
 
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_sm"
-        android:background="@drawable/border_outline"
-        android:padding="1.5dp">
+            <ImageButton
+                android:id="@+id/btn_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginBottom="@dimen/margin_md"
+                android:background="@color/none"
+                android:contentDescription="ic_trash"
+                android:src="@drawable/ic_trash"
+                android:visibility="gone"
+                app:tint="@color/danger" />
 
-        <com.jaredrummler.materialspinner.MaterialSpinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/category"
-            app:ms_background_color="@color/white"
-            app:ms_arrow_tint="@color/secondary"
-            app:ms_hint="Categoría" />
-    </FrameLayout>
+            <RadioGroup
+                android:id="@+id/rg_movement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_xl"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/btn_save"
-        style="@style/btn.primary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_xl2"
-        android:drawableEnd="@drawable/ic_save"
-        android:paddingHorizontal="@dimen/margin_sm"
-        android:text="@string/save" />
+                <RadioButton
+                    android:id="@+id/r_outflow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_md"
+                    android:checked="true"
+                    android:drawableEnd="@drawable/ic_money_send"
+                    android:drawablePadding="@dimen/margin_sm"
+                    android:drawableTint="@color/danger"
+                    android:scaleX="1.1"
+                    android:scaleY="1.1"
+                    android:text="@string/outflow"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
 
-</LinearLayout>
+                <RadioButton
+                    android:id="@+id/r_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/margin_md"
+                    android:drawableEnd="@drawable/ic_money_recive"
+                    android:drawablePadding="@dimen/margin_sm"
+                    android:drawableTint="@color/primary"
+                    android:scaleX="1.1"
+                    android:scaleY="1.1"
+                    android:text="@string/income"
+                    android:textAllCaps="true"
+                    android:textStyle="bold" />
+            </RadioGroup>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/none">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:background="@color/none"
+                    android:cursorVisible="false"
+                    android:drawableStart="@drawable/ic_money"
+                    android:inputType="number"
+                    android:maxLength="9"
+                    android:text="@string/default_amount"
+                    android:textSize="60sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/TextInputLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_xl2"
+                android:hint="@string/description"
+                android:paddingTop="@dimen/margin_xsm"
+                app:counterMaxLength="@integer/descriptionMaxLength"
+                app:startIconDrawable="@drawable/ic_short_text">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLength="@integer/descriptionMaxLength" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_sm"
+                android:background="@drawable/border_outline"
+                android:padding="1.5dp">
+
+                <com.jaredrummler.materialspinner.MaterialSpinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/category"
+                    app:ms_arrow_tint="@color/secondary"
+                    app:ms_background_color="@color/white"
+                    app:ms_hint="Categoría" />
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/btn_save"
+                style="@style/btn.primary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_xl2"
+                android:drawableEnd="@drawable/ic_save"
+                android:paddingHorizontal="@dimen/margin_sm"
+                android:text="@string/save" />
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

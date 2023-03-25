@@ -27,11 +27,12 @@ public class MovementRepository extends Repository {
     }
 
     public void update(final Movement movement) {
+        movement.setDateModified(LocalDateTime.now());
         database.movementDao().update(movement);
     }
 
     public void delete(final Movement movement) {
-        database.movementDao().update(movement);
+        database.movementDao().delete(movement);
     }
 
     public List<Movement> getAll() {

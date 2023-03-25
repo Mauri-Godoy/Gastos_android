@@ -26,6 +26,12 @@ public class DateConverter {
 
     @TypeConverter
     public static String toString(LocalDateTime localDateTime) {
-        return dtfDB.format(localDateTime);
+
+        String str = null;
+
+        if (localDateTime != null)
+            str = dtfDB.format(localDateTime);
+
+        return str;
     }
 }
