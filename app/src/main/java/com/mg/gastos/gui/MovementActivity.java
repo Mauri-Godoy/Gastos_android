@@ -36,7 +36,10 @@ public class MovementActivity extends AppCompatActivity {
     }
 
     private void setNavBottomData() {
-        replaceFragment(new CreateFragment(new Movement()));
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.layout_fragments, new CreateFragment(new Movement()))
+                .commit();
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
 

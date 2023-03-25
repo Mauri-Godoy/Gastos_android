@@ -64,10 +64,10 @@ public class CreateFragment extends Fragment {
         buttonDelete = root.findViewById(R.id.btn_delete);
 
         setRadioGroupAction();
-        setChangeListener();
         setCategoriesInSelect();
         setData();
         setButtonSaveAction();
+        setChangeListener();
         return root;
     }
 
@@ -121,8 +121,10 @@ public class CreateFragment extends Fragment {
         movement.setDescription(description.getText().toString());
         movement.setCategory(category);
 
-        if (movement.getId() == null)
+        if (movement.getId() == null) {
             movementRepository.create(movement);
+            cleanData();
+        }
         else {
             movementRepository.update(movement);
             requireActivity().onBackPressed();
@@ -130,7 +132,6 @@ public class CreateFragment extends Fragment {
 
         Toast.makeText(requireContext(), "Guardado con exito!", Toast.LENGTH_SHORT).show();
 
-        cleanData();
     }
 
     private void cleanData() {
