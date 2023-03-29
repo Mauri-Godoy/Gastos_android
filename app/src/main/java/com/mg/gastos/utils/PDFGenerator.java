@@ -1,5 +1,7 @@
 package com.mg.gastos.utils;
 
+import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,7 +10,9 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
+import android.provider.MediaStore;
 import android.text.TextPaint;
 import android.util.Log;
 import android.widget.Toast;
@@ -31,8 +35,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 
 public class PDFGenerator {
 
@@ -161,7 +167,7 @@ public class PDFGenerator {
 
         String totalStr = String.valueOf(MovementUtils.getTotal(list));
 
-        PdfPCell totalValueCell = new PdfPCell(new Phrase(totalStr,fontWhite));
+        PdfPCell totalValueCell = new PdfPCell(new Phrase(totalStr, fontWhite));
         totalValueCell.setBackgroundColor(secondaryColor);
 
         historyTable.addCell(totalCell);
@@ -181,6 +187,7 @@ public class PDFGenerator {
             e.printStackTrace();
         }
 
+
         document.open();
         document.add(pTitle);
         document.add(historyTable);
@@ -191,3 +198,4 @@ public class PDFGenerator {
         viewFile(file, context);
     }
 }
+
